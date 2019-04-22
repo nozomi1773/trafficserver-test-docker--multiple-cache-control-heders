@@ -14,7 +14,7 @@ docker build -t ats-test .
 ## Run tests
 
 ```
-docker run --rm -it ats-test
+script -c 'docker run --rm -it ats-test' trafficserver-test-$(date +%Y%m%d-%H%M).log
 ```
 
 ## Run Bash shell
