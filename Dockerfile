@@ -38,7 +38,7 @@ USER build
 RUN cd ~/dev/trafficserver/tests \
  && virtualenv --python=python3 env-test \
  && env-test/bin/pip install pip --upgrade \
- && env-test/bin/pip install autest==1.7.2 hyper hyper requests dnslib httpbin
+ && env-test/bin/pip install autest==1.7.2 hyper hyper requests dnslib httpbin trlib
 
 # Run tests for trafficserver
 RUN cd ~/dev/trafficserver/tests \
