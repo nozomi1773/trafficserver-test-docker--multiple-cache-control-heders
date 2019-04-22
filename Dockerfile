@@ -43,10 +43,7 @@ RUN cd ~/dev/trafficserver/tests \
  && env-test/bin/pip install pip --upgrade \
  && env-test/bin/pip install autest==1.7.2 hyper hyper requests dnslib httpbin traffic-replay
 
-# Run tests for trafficserver
-RUN cd ~/dev/trafficserver/tests \
- && . env-test/bin/activate \
- && env-test/bin/autest -D gold_tests --ats-bin /usr/local/bin
+# Install docker-entrypoint.sh
+COPY docker-entrypoint.sh /usr/local/bin/
 
-USER root
-CMD ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
