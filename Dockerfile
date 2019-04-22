@@ -1,12 +1,15 @@
 FROM ubuntu:18.04
 
+# This dockerfile follows the setup in
+# https://github.com/apache/trafficserver/blob/master/tests/bootstrap.py
+
 # Install packages to build trafficserver
 RUN ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime \
  && sed -i 's/^# deb-src/deb-src/' /etc/apt/sources.list \
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get build-dep -y trafficserver \
  && apt-get install -y git \
- && apt-get install -y python3 python3-virtualenv virtualenv python3-dev curl netcat \
+ && apt-get install -y python3 python3-virtualenv virtualenv python3-dev curl netcat net-tools \
  && useradd -r -m -s /bin/bash build
 
 USER build
@@ -38,7 +41,7 @@ USER build
 RUN cd ~/dev/trafficserver/tests \
  && virtualenv --python=python3 env-test \
  && env-test/bin/pip install pip --upgrade \
- && env-test/bin/pip install autest==1.7.2 hyper hyper requests dnslib httpbin trlib
+ && env-test/bin/pip install autest==1.7.2 hyper hyper requests dnslib httpbin traffic-replay
 
 # Run tests for trafficserver
 RUN cd ~/dev/trafficserver/tests \
