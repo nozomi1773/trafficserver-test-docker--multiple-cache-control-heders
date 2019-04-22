@@ -16,3 +16,9 @@ docker build -t ats-test .
 ```
 docker run --rm -it ats-test
 ```
+
+## Run Bash shell
+
+```
+docker run --rm -it --entrypoint bash ats-test
+```
