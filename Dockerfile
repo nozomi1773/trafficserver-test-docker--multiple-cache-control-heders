@@ -43,7 +43,8 @@ RUN cd ~/dev/trafficserver/tests \
  && env-test/bin/pip install pip --upgrade \
  && env-test/bin/pip install autest==1.7.2 hyper hyper requests dnslib httpbin traffic-replay
 
-# Install docker-entrypoint.sh
-COPY docker-entrypoint.sh /usr/local/bin/
+# Run docker tests
+COPY run-trafficserver-tests.sh /usr/local/bin/
+RUN /usr/local/bin/run-trafficserver-tests.sh || :
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/bash"]

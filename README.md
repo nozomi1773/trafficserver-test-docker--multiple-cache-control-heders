@@ -7,18 +7,22 @@ The setup process follows the steps in [tests/bootstrap.py](https://github.com/a
 
 ## Build a docker image
 
+Build trafficserver and run tests during docker build.
+
 ```
 docker build -t ats-test .
-```
-
-## Run tests
-
-```
-script -c 'docker run --rm -it ats-test' trafficserver-test-$(date +%Y%m%d-%H%M).log
 ```
 
 ## Run Bash shell
 
 ```
-docker run --rm -it --entrypoint bash ats-test
+docker run --rm -it ats-test
+```
+
+The test logs are placed in `~build/logs/`.
+
+To run tests again, run the following command in a docker container.
+
+```
+run-trafficserver-tests.sh
 ```
