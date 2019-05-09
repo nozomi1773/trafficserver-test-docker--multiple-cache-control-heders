@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import copy
+import os
 import subprocess
 from jinja2 import Environment, FileSystemLoader
 

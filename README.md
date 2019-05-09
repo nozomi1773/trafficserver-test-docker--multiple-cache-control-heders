@@ -19,7 +19,7 @@ docker build -t ats-test .
 docker run --rm -it ats-test
 ```
 
-The test logs are placed in `~build/logs/`.
+The test logs are placed in `/home/ats/logs/`.
 
 To run tests again, run the following command in a docker container.
 
