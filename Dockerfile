@@ -17,7 +17,7 @@ USER build
 # Get the source and configure trafficserver
 RUN mkdir -p ~/dev \
  && cd ~/dev \
- && git clone --depth 1 https://github.com/apache/trafficserver \
+ && git clone -b 8.0.3 --depth 1 https://github.com/apache/trafficserver \
  && cd trafficserver \
  && git log -1 \
  && autoreconf -if
