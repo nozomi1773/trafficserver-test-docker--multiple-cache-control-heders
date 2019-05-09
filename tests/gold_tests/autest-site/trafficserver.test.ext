@@ -41,7 +41,7 @@ def MakeATSProcess(obj, name, command='traffic_server', select_ports=True):
     # manually set up all directory for the test
 
     # configuration directory
-    config_dir = os.path.join(ts_dir, 'config')
+    config_dir = os.path.join(ts_dir, 'etc')
 
     # directory contains the html response templates
     template_dir = os.path.join(config_dir, 'body_factory')
@@ -58,7 +58,7 @@ def MakeATSProcess(obj, name, command='traffic_server', select_ports=True):
     #ssl, storage & cache
     ssl_dir = os.path.join(ts_dir, 'ssl')
     storage_dir = os.path.join(ts_dir, 'storage')
-    cache_dir = os.path.join(ts_dir, 'cache')
+    cache_dir = os.path.join(ts_dir, 'var', 'cache')
 
     # create process
     p = obj.Processes.Process(name, command)
