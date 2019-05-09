@@ -1,4 +1,6 @@
-FROM ubuntu:18.04
+# We use xenial here since old glibc is needed to build trafficserver 6.2.2.
+# https://github.com/apache/trafficserver/issues/1589
+FROM ubuntu:16.04
 
 # This dockerfile follows the setup in
 # https://github.com/apache/trafficserver/blob/master/tests/bootstrap.py
@@ -17,7 +19,7 @@ USER build
 # Get the source and configure trafficserver
 RUN mkdir -p ~/dev \
  && cd ~/dev \
- && git clone --depth 1 https://github.com/apache/trafficserver \
+ && git clone -b 6.2.2 --depth 1 https://github.com/apache/trafficserver \
  && cd trafficserver \
  && git log -1 \
  && autoreconf -if
@@ -50,6 +52,6 @@ COPY --chown=build:build tests/gold_tests/negative_cache/ /tmp/negative_cache/
 RUN mv /tmp/negative_cache ~/dev/trafficserver/tests/gold_tests/
 RUN . ~/dev/trafficserver/tests/env-test/bin/activate \
  && cd ~/dev/trafficserver/tests/gold_tests/negative_cache \
- && ./generate_and_run_negative_cache_tests.py | tee ~/logs/negative_cache_tests-$(date +%Y%m%d-%H%M%S.log)
+ && HAS_NEGATIVE_CACHING_LIST=0 ./generate_and_run_negative_cache_tests.py | tee ~/logs/negative_cache_tests-$(date +%Y%m%d-%H%M%S.log)
 
 ENTRYPOINT ["/bin/bash"]

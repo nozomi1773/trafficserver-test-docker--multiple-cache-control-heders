@@ -567,6 +567,9 @@ negative_caching_list_default = "204,305,403,404,405,414,500,501,502,503,504"
 
 env = Environment(loader=FileSystemLoader('templates'))
 
+# whether trafficserver supports negative_caching_list config
+has_negative_caching_list = (os.getenv('HAS_NEGATIVE_CACHING_LIST', '1') != '0')
+
 def build_config(env, status_code, test_case):
     config = copy.copy(test_case)
     config['status_code'] = status_code
@@ -584,7 +587,7 @@ def build_config(env, status_code, test_case):
         config['config_allow_empty_doc'] = 0
 
     config['config_negative_caching_enabled'] = 1 if config['negative_caching_enabled'] else 0
-    if config['negative_caching_enabled']:
+    if config['negative_caching_enabled'] and has_negative_caching_list:
         if config['in_negative_caching_list']:
             config['config_negative_caching_list'] = config['status_code']
         else:
@@ -605,6 +608,13 @@ def build_configs(env, test_cases):
     for status_code, cases_per_status_code in test_cases.items():
         for test_case in cases_per_status_code:
             config = build_config(env, status_code, test_case)
+
+            # NOTE: For old version which does not support negative_caching_list config,
+            # discard in_negative_caching_list=False case to deduplicate test cases for
+            # in_negative_caching_list=True and False.
+            if (not has_negative_caching_list) and config['negative_caching_enabled'] and not config['in_negative_caching_list']:
+                continue
+
             configs.append(config)
     return configs
 
