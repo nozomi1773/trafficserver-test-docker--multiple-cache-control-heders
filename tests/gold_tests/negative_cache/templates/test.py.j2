@@ -65,21 +65,21 @@ ts.Disk.remap_config.AddLine(
 tr = Test.AddTestRun()
 tr.Processes.Default.StartBefore(server)
 tr.Processes.Default.StartBefore(Test.Processes.ts, ready=1)
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/{{ status_code }}'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/{{ status_code }}'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/{{ gold_file_basenames[0] }}.gold"
 tr.StillRunningAfter = ts
 
 # Test 2 - {{ status_code }} empty response and cache miss
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/{{ status_code }}'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/{{ status_code }}'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/{{ gold_file_basenames[1] }}.gold"
 tr.StillRunningAfter = ts
 
 # Test 3 - {{ status_code }} empty response and cache miss
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/{{ status_code }}'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/{{ status_code }}'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/{{ gold_file_basenames[2] }}.gold"
 tr.StillRunningAfter = ts
