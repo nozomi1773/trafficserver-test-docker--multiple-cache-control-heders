@@ -1,45 +1,22 @@
-# We use xenial here since old glibc is needed to build trafficserver 6.2.2.
-# https://github.com/apache/trafficserver/issues/1589
-FROM ubuntu:16.04
+FROM centos:7
 
-# This dockerfile follows the setup in
-# https://github.com/apache/trafficserver/blob/master/tests/bootstrap.py
-
-# Install packages to build trafficserver
-RUN ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime \
- && sed -i 's/^# deb-src/deb-src/' /etc/apt/sources.list \
- && apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get build-dep -y trafficserver \
- && apt-get install -y git \
- && apt-get install -y python3 python3-virtualenv virtualenv python3-dev curl netcat net-tools \
+RUN yum -y install epel-release \
+ && curl -sL -o /etc/yum.repos.d/hnakamur-apache-traffic-server-6.repo https://copr.fedoraproject.org/coprs/hnakamur/apache-traffic-server-6/repo/epel-7/hnakamur-apache-traffic-server-6-epel-7.repo \
+ && yum -y install trafficserver @"Development Tools" git python36 python36-devel python36-virtualenv \
  && useradd -r -m -s /bin/bash build
 
 USER build
 
-# Get the source and configure trafficserver
+# Get the source for test files
 RUN mkdir -p ~/dev \
  && cd ~/dev \
- && git clone -b 6.2.2 --depth 1 https://github.com/apache/trafficserver \
+ && git clone --depth 1 https://github.com/apache/trafficserver \
  && cd trafficserver \
- && git log -1 \
- && autoreconf -if
-
-# Build trafficserver
-RUN cd ~/dev/trafficserver \
- && ./configure --enable-experimental-plugins \
- && make
-
-USER root
-RUN cd ~build/dev/trafficserver \
- && make install \
- && echo /usr/local/lib > /etc/ld.so.conf.d/trafficserver.conf \
- && ldconfig
-
-USER build
+ && git log -1
 
 # Set up test environment
 RUN cd ~/dev/trafficserver/tests \
- && virtualenv --python=python3 env-test \
+ && python3 -m venv env-test \
  && env-test/bin/pip install pip --upgrade \
  && env-test/bin/pip install autest==1.7.2 hyper requests dnslib httpbin traffic-replay
 

@@ -9,5 +9,5 @@ mkdir -p ~build/logs
  && . env-test/bin/activate \
  && echo "" \
  && echo "=== test results ===" \
- && env-test/bin/autest -D gold_tests --ats-bin /usr/local/bin) \
+ && env-test/bin/autest -D gold_tests --ats-bin /opt/trafficserver/bin) \
  | tee ~build/logs/trafficserver-test-$(date +%Y%m%d-%H%M).log

@@ -643,7 +643,7 @@ def run_tests():
     test_names = []
     for config in build_configs(env, test_cases):
         test_names.append(config['test_name'])
-    subprocess.call(['autest', '--autest-site', '../autest-site', '--ats-bin', '/usr/local/bin', '-D', '.', '-f', ','.join(test_names)])
+    subprocess.call(['autest', '--autest-site', '../autest-site', '--ats-bin', '/opt/trafficserver/bin', '-D', '.', '-f', ','.join(test_names)])
 
 if __name__ == '__main__':
     write_testcases_summary_text()
