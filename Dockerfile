@@ -22,8 +22,6 @@ RUN mkdir -p ~/dev \
  && git log -1 \
  && autoreconf -if
 
-# NOTE: Add patches here if available
-
 # Build trafficserver
 RUN cd ~/dev/trafficserver \
  && ./configure --enable-experimental-plugins \
@@ -41,10 +39,17 @@ USER build
 RUN cd ~/dev/trafficserver/tests \
  && virtualenv --python=python3 env-test \
  && env-test/bin/pip install pip --upgrade \
- && env-test/bin/pip install autest==1.7.2 hyper hyper requests dnslib httpbin traffic-replay
+ && env-test/bin/pip install autest==1.7.2 hyper requests dnslib httpbin traffic-replay
 
-# Run docker tests
+# Run trafficserver tests
 COPY run-trafficserver-tests.sh /usr/local/bin/
 RUN /usr/local/bin/run-trafficserver-tests.sh || :
+
+# Run negative cache tests
+COPY --chown=build:build tests/gold_tests/negative_cache/ /tmp/negative_cache/
+RUN mv /tmp/negative_cache ~/dev/trafficserver/tests/gold_tests/
+RUN . ~/dev/trafficserver/tests/env-test/bin/activate \
+ && cd ~/dev/trafficserver/tests/gold_tests/negative_cache \
+ && ./generate_and_run_negative_cache_tests.py | tee ~/logs/negative_cache_tests-$(date +%Y%m%d-%H%M%S.log)
 
 ENTRYPOINT ["/bin/bash"]
