@@ -1,7 +1,7 @@
 HTTP/1.1 304 Not Modified
 Date: ``
 Connection: keep-alive
-Via: http/1.1 `` (ApacheTrafficServer [uScMsNf pSeN:t cCMp sS])
+Via: http/1.1 `` (ApacheTrafficServer [uScMsNf pSeN:t cCM``p sS])
 Server: ``
 Warning: 199 ApacheTrafficServer Proxy received unexpected 304 response; content may be stale
 X-Cache: miss

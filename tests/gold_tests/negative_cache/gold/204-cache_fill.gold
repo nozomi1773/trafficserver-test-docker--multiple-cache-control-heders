@@ -1,7 +1,7 @@
 HTTP/1.1 204 No Content
 Date: ``
 Connection: keep-alive
-Via: http/1.1 `` (ApacheTrafficServer [uScMsSfWpSeN:t cCMp sS])
+Via: http/1.1 `` (ApacheTrafficServer [uScMsSfWpSeN:t cCM``p sS])
 Server: ``
 X-Cache: miss
 ``

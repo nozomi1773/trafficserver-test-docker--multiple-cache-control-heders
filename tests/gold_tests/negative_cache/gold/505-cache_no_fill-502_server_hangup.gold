@@ -1,7 +1,7 @@
 HTTP/1.1 502 Server Hangup
 Date: ``
 Connection: keep-alive
-Via: http/1.1 ats-test (ApacheTrafficServer [uScMsEf p eC:t cCMp sF])
+Via: http/1.1 ats-test (ApacheTrafficServer [uScMsEf p eC:t cCM``p sF])
 Server: ``
 Cache-Control: no-store
 Content-Type: text/html
