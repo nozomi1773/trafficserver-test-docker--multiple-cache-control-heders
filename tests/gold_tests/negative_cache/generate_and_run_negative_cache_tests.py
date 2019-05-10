@@ -116,6 +116,56 @@ common_test_cases_per_status_50x = [
     },
 ]
 
+common_test_cases_per_status_50x_2 = [
+    {
+        'empty_response': False,
+        'negative_caching_enabled': True, 'in_negative_caching_list': True,
+        'gold_file_basenames': [ 'non_empty-cache_fill', 'non_empty-cache_hit', 'non_empty-cache_ram_hit' ]
+    },
+    {
+        'empty_response': False,
+        'negative_caching_enabled': True, 'in_negative_caching_list': False,
+        'gold_file_basenames': [ 'non_empty-cache_fill', 'non_empty-cache_hit', 'non_empty-cache_ram_hit' ]
+    },
+    {
+        'empty_response': False,
+        'negative_caching_enabled': False,
+        'gold_file_basenames': [ 'non_empty-cache_no_fill', 'non_empty-cache_no_fill', 'non_empty-cache_no_fill' ]
+    },
+
+    {
+        'empty_response': True, 'allow_empty_doc': True,
+        'negative_caching_enabled': True, 'in_negative_caching_list': True,
+        'gold_file_basenames': [ 'empty-cache_fill', 'empty-cache_hit', 'empty-cache_ram_hit' ]
+    },
+    {
+        'empty_response': True, 'allow_empty_doc': True,
+        'negative_caching_enabled': True, 'in_negative_caching_list': False,
+        'gold_file_basenames': [ 'empty-cache_fill', 'empty-cache_hit', 'empty-cache_ram_hit' ]
+    },
+    {
+        'empty_response': True, 'allow_empty_doc': True,
+        'negative_caching_enabled': False,
+        'gold_file_basenames': [ 'empty-cache_no_fill', 'empty-cache_no_fill', 'empty-cache_no_fill' ]
+    },
+
+    {
+        'empty_response': True, 'allow_empty_doc': False,
+        'negative_caching_enabled': True, 'in_negative_caching_list': True,
+        'gold_file_basenames': [ 'empty-cache_fill', 'empty-cache_fill', 'empty-cache_fill' ]
+    },
+    {
+        'empty_response': True, 'allow_empty_doc': False,
+        'negative_caching_enabled': True, 'in_negative_caching_list': False,
+        'gold_file_basenames': [ 'empty-cache_fill', 'empty-cache_fill', 'empty-cache_fill' ]
+    },
+    {
+        'empty_response': True, 'allow_empty_doc': False,
+        'negative_caching_enabled': False,
+        'gold_file_basenames': [ 'empty-cache_no_fill', 'empty-cache_no_fill', 'empty-cache_no_fill' ]
+    },
+]
+
 test_cases = {
     '201': common_test_cases_per_status,
     '202': common_test_cases_per_status,
@@ -490,11 +540,11 @@ test_cases = {
 
      # NOTE: Status 505 HTTP Version Not Supported must be tested separately with special treatment.
 
-    '506': common_test_cases_per_status_50x,
-    '507': common_test_cases_per_status_50x,
-    '508': common_test_cases_per_status_50x,
-    '510': common_test_cases_per_status_50x,
-    '511': common_test_cases_per_status_50x,
+    '506': common_test_cases_per_status_50x_2,
+    '507': common_test_cases_per_status_50x_2,
+    '508': common_test_cases_per_status_50x_2,
+    '510': common_test_cases_per_status_50x_2,
+    '511': common_test_cases_per_status_50x_2,
 }
 
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
