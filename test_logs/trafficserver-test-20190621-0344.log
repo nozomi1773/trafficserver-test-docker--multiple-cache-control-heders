@@ -1,0 +1,1956 @@
+=== test target trafficserver git commit ===
+commit 75e7fc340a5de90c9453ebc8b5302a41a3f73ce8
+Author: Walter Karas <wkaras@verizonmedia.com>
+Date:   Thu Jun 20 11:26:06 2019 -0500
+
+    Reenable redirect_actions Au test as it is working now.
+
+=== test results ===
+[1mRunning Test all_headers:[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test basic:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test basic-manager:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test bucketcookie:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cache-control:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cache-generation-clear:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cache-generation-disjoint:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cache_and_req_body:[0m[1m.[0m[1m.[0m[1mF[0m[1mF[0m[1m [0m[31mFailed[0m[1m
+[0m[1mRunning Test cachedIMSRange:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test ccid_ctid:[0m[1mRunning Test cert_update:[0m[1m.[0m[1m.[0m[1mF[0m[1m [0m[31mFailed[0m[1m
+[0m[1mRunning Test chunked_encoding:[0m[1mRunning Test client_context_dump:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test collapseslashes:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test compress:[0m[1m [0m[1mSkipped[0m[1m
+[0m[93mWarning: Skipping test compress because:
+ ATS feature not enabled: TS_HAS_BROTLI
+[0m[1mRunning Test config:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test connector:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test copy_config:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test copy_config2:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cppapi:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test custom-log:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test deny0:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test disjoint-wait-for-cache:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test domain-blacklist-30x:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test double:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test double_h2:[0m[1mRunning Test existscookie:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test forwarded:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1mF[0m[1mF[0m[1m [0m[31mFailed[0m[1m
+[0m[1mRunning Test general-connection-failure-502:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test h2disable:[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test header_rewrite:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test hsts:[0m[1mRunning Test http2:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http204_response:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http204_response_plugin:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http2_priority:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http304_response:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http408:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http_head_no_origin:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http_with_origin:[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test httpbin:[0m[1m [0m[1mSkipped[0m[1m
+[0m[93mWarning: Skipping test httpbin because:
+ gunicorn needs be installed with httpbin package for this extension to run
+[0m[1mRunning Test log-field:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test matchcookie:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test matchuri:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test matrixparams:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test multiplexer:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test normalize_ae:[0m[1m [0m[1mSkipped[0m[1m
+[0m[93mWarning: Skipping test normalize_ae because:
+ ATS feature not enabled: TS_HAS_BROTLI
+[0m[1mRunning Test notexistscookie:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test null_transform:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test openclose:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test openclose_h2:[0m[1mRunning Test redirect:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test redirect_actions:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test redirect_post:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test regex_revalidate:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test regexcookie:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test remap_http:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test remap_https:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_error:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_init:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_manager:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_remove:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_use:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_verify:[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test schedule:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test schedule_on_pool:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test schedule_on_thread:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test setstatus:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test slice:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test slice_error:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test slow_post:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test sslheaders:[0m[1mRunning Test subcookie:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test substitute:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test syntax:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test test_hooks:[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_100_0:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_100_1:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_100_10:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_1_0:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_1_1:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_1_10:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_2_0:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_2_1:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_2_10:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_32_0:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_32_1:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_32_10:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_affinity:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test timeout:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls:[0m[1mRunning Test tls_check_cert_selection:[0m[1mF[0m[1m [0m[31mFailed[0m[1m
+[0m[1mRunning Test tls_client_cert:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_client_cert2:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_client_cert_override:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_client_verify:[0m[1mRunning Test tls_client_verify2:[0m[1mRunning Test tls_client_versions:[0m[1mRunning Test tls_forward_nonhttp:[0m[1mRunning Test tls_hooks:[0m[1mRunning Test tls_hooks10:[0m[1mRunning Test tls_hooks11:[0m[1mRunning Test tls_hooks12:[0m[1mRunning Test tls_hooks13:[0m[1mRunning Test tls_hooks14:[0m[1mRunning Test tls_hooks15:[0m[1mRunning Test tls_hooks16:[0m[1mRunning Test tls_hooks17:[0m[1mRunning Test tls_hooks18:[0m[1mRunning Test tls_hooks2:[0m[1mRunning Test tls_hooks3:[0m[1mRunning Test tls_hooks4:[0m[1mRunning Test tls_hooks6:[0m[1mRunning Test tls_hooks7:[0m[1mRunning Test tls_hooks8:[0m[1mRunning Test tls_hooks9:[0m[1mRunning Test tls_hooks_client_verify:[0m[1mF[0m[1m [0m[31mFailed[0m[1m
+[0m[1mRunning Test tls_hooks_verify:[0m[1mRunning Test tls_keepalive:[0m[1mRunning Test tls_ocsp:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_ticket:[0m[1mRunning Test tls_tunnel:[0m[1mRunning Test tls_tunnel_forward:[0m[1mRunning Test tls_tunnel_plugin_rename:[0m[1mRunning Test tls_verify:[0m[1mRunning Test tls_verify2:[0m[1mRunning Test tls_verify3:[0m[1mRunning Test tls_verify_base:[0m[1mRunning Test tls_verify_ca_override:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_verify_not_pristine:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_verify_override:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_verify_override_base:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tsapi:[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test url_sig:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test via:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1mF[0m[1mF[0m[1m [0m[31mFailed[0m[1m
+[0m[1mRunning Test x_remap:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1m
+Generating Report: --------------
+[0m[1m3 Tests were skipped:
+[0m[1m--------------------------------------------------------------------------------
+[0m[1m Test "httpbin" Skipped
+    File: httpbin.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/h2
+[0m[1m  Reason: gunicorn needs be installed with httpbin package for this extension to run
+[0m[1m
+[0m[1m Test "normalize_ae" Skipped
+    File: normalize_ae.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/headers
+[0m[1m  Reason: ATS feature not enabled: TS_HAS_BROTLI
+[0m[1m
+[0m[1m Test "compress" Skipped
+    File: compress.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/pluginTest/compress
+[0m[1m  Reason: ATS feature not enabled: TS_HAS_BROTLI
+[0m[1m
+[0m[1m Test: ccid_ctid: [0m[31mException[0m[1m
+    File: ccid_ctid.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/logging
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/logging/ccid_ctid.test.py", line 32, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: via: [0m[31mFailed[0m[1m
+    File: via.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/headers
+   file via.log : Checking that via.log matches via.gold - [0m[31mFailed[0m[1m
+      Reason: File differences
+       Gold File : /home/build/dev/trafficserver/tests/gold_tests/headers/via.gold
+       Data File : /home/build/dev/trafficserver/tests/_sandbox/via/via.log
+         Via: http/1.1 = http/1.1 tcp ipv4
+         Via: http/1.0 = http/1.0 tcp ipv4
+         Via: https/2 = http/1.1 h2 tls/1.3 tcp ipv4
+         Via: https/1.1 = http/1.1 tls/1.3 tcp ipv4
+       - Via: http/1.1 = http/1.1 tcp ipv6
+       - Via: https/1.1 = http/1.1 tls/1.{} tcp ipv6
+   Starting Test via : No issues found - [0m[32mPassed[0m[1m
+      Reason: Started!
+   Process: ts: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 0 == 0
+     file /home/build/dev/trafficserver/tests/_sandbox/via/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/via/ts/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/via/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/via/ts/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: server: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that any test passes - [0m[32mPassed[0m[1m
+        Reason: One or more tests passed
+     
+       Test : Checking that ReturnCode == None - [0m[31mFailed[0m[1m
+          Reason: Returned Value 0 != None
+       
+     
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Run: 0-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 1-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 2-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 3-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 4-tr: [0m[31mFailed[0m[1m
+     Test : Checking that True == _isRunningAfter - [0m[32mPassed[0m[1m
+        Reason: Returned Value: True == _isRunningAfter
+     Starting TestRun 4-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+   Run: 5-tr: [0m[31mFailed[0m[1m
+     Test : Checking that True == _isRunningAfter - [0m[32mPassed[0m[1m
+        Reason: Returned Value: True == _isRunningAfter
+     Starting TestRun 5-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+
+[0m[1m Test: hsts: [0m[31mException[0m[1m
+    File: hsts.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/headers
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/headers/hsts.test.py", line 28, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: cache_and_req_body: [0m[31mFailed[0m[1m
+    File: cache_and_req_body.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/headers
+   Starting Test cache_and_req_body : No issues found - [0m[32mPassed[0m[1m
+      Reason: Started!
+   Process: ts: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 0 == 0
+     file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/config/plugin.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/config/plugin.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/ts/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: server: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that any test passes - [0m[32mPassed[0m[1m
+        Reason: One or more tests passed
+     
+       Test : Checking that ReturnCode == None - [0m[31mFailed[0m[1m
+          Reason: Returned Value 0 != None
+       
+     
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Run: 0-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/_output/0-tr-Default/stream.stdout.txt : Checking that all 10 headers exist and have matching values: Connection, Via, Server, X-Cache-Key, X-Cache, Last-Modified, cache-control, Content-Length, Date, Age - [0m[32mPassed[0m[1m
+          Reason: Curl headers and values match
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/_output/0-tr-Default/stream.stdout.txt : Checking that all 10 headers exist and have matching values: Connection, Via, Server, X-Cache-Key, X-Cache, Last-Modified, cache-control, Content-Length, Date, Age - [0m[32mPassed[0m[1m
+          Reason: Curl headers and values match
+   Run: 1-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/_output/1-tr-Default/stream.stdout.txt : Checking that all 10 headers exist and have matching values: Last-Modified, cache-control, Content-Length, Date, Age, Connection, Via, Server, X-Cache, HTTP/1.1 200 OK - [0m[32mPassed[0m[1m
+          Reason: Curl headers and values match
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/_output/1-tr-Default/stream.stdout.txt : Checking that all 10 headers exist and have matching values: Last-Modified, cache-control, Content-Length, Date, Age, Connection, Via, Server, X-Cache, HTTP/1.1 200 OK - [0m[32mPassed[0m[1m
+          Reason: Curl headers and values match
+   Run: 2-tr: [0m[31mFailed[0m[1m
+     Test : Checking that True == _isRunningAfter - [0m[32mPassed[0m[1m
+        Reason: Returned Value: True == _isRunningAfter
+     Starting TestRun 2-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/_output/2-tr-Default/stream.stdout.txt : Checking that all 10 headers exist and have matching values: Last-Modified, cache-control, Content-Length, Date, Age, Connection, Via, Server, X-Cache, HTTP/1.1 200 OK - [0m[31mFailed[0m[1m
+          Reason: In field: x-cache 
+           Not an exact match.
+           Expected : hit-fresh
+           Actual   : hit-stale
+           --------------------------------------------------------------------------------
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/_output/2-tr-Default/stream.stdout.txt : Checking that all 10 headers exist and have matching values: Last-Modified, cache-control, Content-Length, Date, Age, Connection, Via, Server, X-Cache, HTTP/1.1 200 OK - [0m[31mFailed[0m[1m
+          Reason: In field: x-cache 
+           Not an exact match.
+           Expected : hit-fresh
+           Actual   : hit-stale
+           --------------------------------------------------------------------------------
+   Run: 3-tr: [0m[31mFailed[0m[1m
+     Test : Checking that True == _isRunningAfter - [0m[32mPassed[0m[1m
+        Reason: Returned Value: True == _isRunningAfter
+     Starting TestRun 3-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/_output/3-tr-Default/stream.stdout.txt : Checking that all 10 headers exist and have matching values: Last-Modified, cache-control, Content-Length, Date, Age, Connection, Via, Server, X-Cache, HTTP/1.1 200 OK - [0m[31mFailed[0m[1m
+          Reason: Nonexistent field: last-modified
+           --------------------------------------------------------------------------------
+           Nonexistent field: cache-control
+           --------------------------------------------------------------------------------
+           Nonexistent field: content-length
+           --------------------------------------------------------------------------------
+           Nonexistent field: date
+           --------------------------------------------------------------------------------
+           Nonexistent field: age
+           --------------------------------------------------------------------------------
+           Nonexistent field: connection
+           --------------------------------------------------------------------------------
+           Nonexistent field: via
+           --------------------------------------------------------------------------------
+           Nonexistent field: server
+           --------------------------------------------------------------------------------
+           Nonexistent field: x-cache
+           --------------------------------------------------------------------------------
+           Nonexistent field: http/1.1 200 ok
+           --------------------------------------------------------------------------------
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cache_and_req_body/_output/3-tr-Default/stream.stdout.txt : Checking that all 10 headers exist and have matching values: Last-Modified, cache-control, Content-Length, Date, Age, Connection, Via, Server, X-Cache, HTTP/1.1 200 OK - [0m[31mFailed[0m[1m
+          Reason: Nonexistent field: last-modified
+           --------------------------------------------------------------------------------
+           Nonexistent field: cache-control
+           --------------------------------------------------------------------------------
+           Nonexistent field: content-length
+           --------------------------------------------------------------------------------
+           Nonexistent field: date
+           --------------------------------------------------------------------------------
+           Nonexistent field: age
+           --------------------------------------------------------------------------------
+           Nonexistent field: connection
+           --------------------------------------------------------------------------------
+           Nonexistent field: via
+           --------------------------------------------------------------------------------
+           Nonexistent field: server
+           --------------------------------------------------------------------------------
+           Nonexistent field: x-cache
+           --------------------------------------------------------------------------------
+           Nonexistent field: http/1.1 200 ok
+           --------------------------------------------------------------------------------
+
+[0m[1m Test: forwarded: [0m[31mFailed[0m[1m
+    File: forwarded.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/headers
+   file forwarded.log : Checking that forwarded.log matches forwarded.gold - [0m[31mFailed[0m[1m
+      Reason: File differences
+       Gold File : /home/build/dev/trafficserver/tests/gold_tests/headers/forwarded.gold
+       Data File : /home/build/dev/trafficserver/tests/_sandbox/forwarded/forwarded.log
+         FORWARDED MISSING
+         -
+         FORWARDED MISSING
+         -
+         for=127.0.0.1
+         -
+         by=127.0.0.1
+         -
+         by=unknown
+         -
+         by=Poxy_Proxy
+         -
+         __BY_EQUAL_UUID__
+         -
+         proto=http
+         -
+         host=www.forwarded-host.com
+         -
+         connection=http
+         -
+         connection=http/1.1
+         -
+         connection=http/1.1-tcp-ipv4
+         -
+         __BY_EQUAL_UUID__
+         -
+         for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=http;host=www.no-oride.com;connection=http;connection=http/1.1;connection=http/1.1-tcp-ipv4
+         -
+         for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=http;host=www.no-oride.com;connection=http;connection=http/1.0;connection=http/1.0-tcp-ipv4
+         -
+         for=0.6.6.6
+         for=_argh, for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=http;host=www.no-oride.com;connection=http;connection=http/1.0;connection=http/1.0-tcp-ipv4
+         -
+         for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=https;host=www.no-oride.com;connection=https;connection=https/2;connection=http/1.1-h2-tls/1.3-tcp-ipv4
+         -
+         for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=https;host=www.no-oride.com;connection=https;connection=https/1.1;connection=http/1.1-tls/1.3-tcp-ipv4
+         -
+       - for="[::1]";by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by="[::1]";proto=http;host=www.no-oride.com;connection=http;connection=http/1.1;connection=http/1.1-tcp-ipv6
+       - -
+       - for="[::1]";by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by="[::1]";proto=https;host=www.no-oride.com;connection=https;connection=https/1.1;connection=http/1.1-tls/1.{}-tcp-ipv6
+       - -
+   Starting Test forwarded : No issues found - [0m[32mPassed[0m[1m
+      Reason: Started!
+   Process: server: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that any test passes - [0m[32mPassed[0m[1m
+        Reason: One or more tests passed
+     
+       Test : Checking that ReturnCode == None - [0m[31mFailed[0m[1m
+          Reason: Returned Value 0 != None
+       
+     
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       
+   Process: ts: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 0 == 0
+     file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: ts2: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 2 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 2 == 2
+     file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Run: 0-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 1-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 2-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 3-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 4-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 5-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 6-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 7-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 8-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 9-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 10-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 11-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 12-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 13-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 14-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 15-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 16-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 17-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 18-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 19-tr: [0m[31mFailed[0m[1m
+     Starting TestRun 19-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+   Run: 20-tr: [0m[31mFailed[0m[1m
+     Starting TestRun 20-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+
+[0m[1m Test: tls_hooks10: [0m[31mException[0m[1m
+    File: tls_hooks10.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks10.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks11: [0m[31mException[0m[1m
+    File: tls_hooks11.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks11.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks8: [0m[31mException[0m[1m
+    File: tls_hooks8.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks8.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks4: [0m[31mException[0m[1m
+    File: tls_hooks4.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks4.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks18: [0m[31mException[0m[1m
+    File: tls_hooks18.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks18.test.py", line 31, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks7: [0m[31mException[0m[1m
+    File: tls_hooks7.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks7.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks13: [0m[31mException[0m[1m
+    File: tls_hooks13.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks13.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks3: [0m[31mException[0m[1m
+    File: tls_hooks3.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks3.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks12: [0m[31mException[0m[1m
+    File: tls_hooks12.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks12.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks: [0m[31mException[0m[1m
+    File: tls_hooks.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks17: [0m[31mException[0m[1m
+    File: tls_hooks17.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks17.test.py", line 30, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks6: [0m[31mException[0m[1m
+    File: tls_hooks6.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks6.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks9: [0m[31mException[0m[1m
+    File: tls_hooks9.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks9.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks16: [0m[31mException[0m[1m
+    File: tls_hooks16.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks16.test.py", line 30, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks15: [0m[31mException[0m[1m
+    File: tls_hooks15.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks15.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks14: [0m[31mException[0m[1m
+    File: tls_hooks14.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks14.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks2: [0m[31mException[0m[1m
+    File: tls_hooks2.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls_hooks
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls_hooks/tls_hooks2.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks_verify: [0m[31mException[0m[1m
+    File: tls_hooks_verify.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_hooks_verify.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_tunnel_plugin_rename: [0m[31mException[0m[1m
+    File: tls_tunnel_plugin_rename.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_tunnel_plugin_rename.test.py", line 25, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_tunnel: [0m[31mException[0m[1m
+    File: tls_tunnel.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_tunnel.test.py", line 26, in <module>
+         ts = Test.MakeATSProcess("ts", command="traffic_manager", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_hooks_client_verify: [0m[31mFailed[0m[1m
+    File: tls_hooks_client_verify.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+   Starting Test tls_hooks_client_verify : No issues found - [0m[32mPassed[0m[1m
+      Reason: Started!
+   Process: ts: [0m[31mFailed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : RunCommand - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 0 == 0
+     file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/_output/tls_hooks_client_verify-ts/stream.all.txt : verify callback happens 2 times - [0m[31mFailed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/_output/tls_hooks_client_verify-ts/stream.all.txt did not contains expression: "Client verify callback 0 [\da-fx]+? - event is good good HS"
+     file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/_output/tls_hooks_client_verify-ts/stream.all.txt : verify callback happens 2 times - [0m[31mFailed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/_output/tls_hooks_client_verify-ts/stream.all.txt did not contains expression: "Client verify callback 1 [\da-fx]+? - event is good good HS"
+     file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/_output/tls_hooks_client_verify-ts/stream.all.txt : verify callback happens 2 times - [0m[31mFailed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/_output/tls_hooks_client_verify-ts/stream.all.txt did not contains expression: "Client verify callback 0 [\da-fx]+? - event is good error HS"
+     file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/_output/tls_hooks_client_verify-ts/stream.all.txt : verify callback happens 2 times - [0m[31mFailed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/_output/tls_hooks_client_verify-ts/stream.all.txt did not contains expression: "Client verify callback 1 [\da-fx]+? - event is good error HS"
+     file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/sni.yaml : Appended file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/sni.yaml - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/plugin.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/tls_hooks_client_verify/ts/config/plugin.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: server: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that any test passes - [0m[32mPassed[0m[1m
+        Reason: One or more tests passed
+     
+       Test : Checking that ReturnCode == None - [0m[31mFailed[0m[1m
+          Reason: Returned Value 0 != None
+       
+     
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Run: request good name: [0m[31mFailed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Starting TestRun 0-tr : Checking that Process is ready within 10.0 seconds so we can start process: Default - [0m[31mFailed[0m[1m
+        Reason: Process failed to become ready in time
+     Process: Default: [0m[1mSkipped[0m[1m
+        Reason: Was not started
+     Process: Default: [0m[1mSkipped[0m[1m
+        Reason: Was not started
+   Run: request bad name: [0m[1mSkipped[0m[1m
+      Reason: Test run 0-tr failed
+   Run: request badly signed cert: [0m[1mSkipped[0m[1m
+      Reason: Test run 0-tr failed
+
+[0m[1m Test: tls_verify_base: [0m[31mException[0m[1m
+    File: tls_verify_base.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_verify_base.test.py", line 25, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_client_verify: [0m[31mException[0m[1m
+    File: tls_client_verify.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_client_verify.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_verify2: [0m[31mException[0m[1m
+    File: tls_verify2.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_verify2.test.py", line 25, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_tunnel_forward: [0m[31mException[0m[1m
+    File: tls_tunnel_forward.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_tunnel_forward.test.py", line 25, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_keepalive: [0m[31mException[0m[1m
+    File: tls_keepalive.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_keepalive.test.py", line 31, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_ticket: [0m[31mException[0m[1m
+    File: tls_ticket.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_ticket.test.py", line 26, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_verify3: [0m[31mException[0m[1m
+    File: tls_verify3.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_verify3.test.py", line 25, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_client_verify2: [0m[31mException[0m[1m
+    File: tls_client_verify2.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_client_verify2.test.py", line 27, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_verify: [0m[31mException[0m[1m
+    File: tls_verify.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_verify.test.py", line 25, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_check_cert_selection: [0m[31mFailed[0m[1m
+    File: tls_check_cert_selection.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+   Starting Test tls_check_cert_selection : No issues found - [0m[32mPassed[0m[1m
+      Reason: Started!
+   Process: ts: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 0 == 0
+     file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/ts/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: server: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that any test passes - [0m[32mPassed[0m[1m
+        Reason: One or more tests passed
+     
+       Test : Checking that ReturnCode == None - [0m[31mFailed[0m[1m
+          Reason: Returned Value 0 != None
+       
+     
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       
+   Process: dns: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 0 == 0
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Run: bar.com cert: [0m[31mFailed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Test : Checking that True == _isRunningAfter - [0m[32mPassed[0m[1m
+        Reason: Returned Value: True == _isRunningAfter
+     Starting TestRun 0-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 35 != 0
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Curl attempt should have succeeded - [0m[32mPassed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt excludes expression
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Cert should contain bar.com - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "CN=bar.com"
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Cert should not contain foo.com - [0m[32mPassed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt excludes expression
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Should make an exchange - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "404"
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Should make an exchange - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "404"
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Should make an exchange - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "404"
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Should make an exchange - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "404"
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 35 != 0
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Curl attempt should have succeeded - [0m[32mPassed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt excludes expression
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Cert should contain bar.com - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "CN=bar.com"
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Cert should not contain foo.com - [0m[32mPassed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt excludes expression
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Should make an exchange - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "404"
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Should make an exchange - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "404"
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Should make an exchange - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "404"
+       file /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt : Should make an exchange - [0m[31mFailed[0m[1m
+          Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/tls_check_cert_selection/_output/0-tr-Default/stream.all.txt did not contains expression: "404"
+   Run: foo.com cert: [0m[1mSkipped[0m[1m
+      Reason: Test run 0-tr failed
+   Run: random.server.com cert: [0m[1mSkipped[0m[1m
+      Reason: Test run 0-tr failed
+   Run: Bad SNI: [0m[1mSkipped[0m[1m
+      Reason: Test run 0-tr failed
+
+[0m[1m Test: tls_forward_nonhttp: [0m[31mException[0m[1m
+    File: tls_forward_nonhttp.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_forward_nonhttp.test.py", line 25, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls: [0m[31mException[0m[1m
+    File: tls.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls.test.py", line 25, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: tls_client_versions: [0m[31mException[0m[1m
+    File: tls_client_versions.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/tls
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/tls/tls_client_versions.test.py", line 33, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: openclose_h2: [0m[31mException[0m[1m
+    File: openclose_h2.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/continuations
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/continuations/openclose_h2.test.py", line 30, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True, command="traffic_manager")
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: double_h2: [0m[31mException[0m[1m
+    File: double_h2.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/continuations
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/continuations/double_h2.test.py", line 29, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True, command="traffic_manager")
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: chunked_encoding: [0m[31mException[0m[1m
+    File: chunked_encoding.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/chunked_encoding
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/chunked_encoding/chunked_encoding.test.py", line 67, in <module>
+         ts.Ready = When.PortsReady([ts.Variables.port, ts.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsReady'
+
+[0m[1m Test: sslheaders: [0m[31mException[0m[1m
+    File: sslheaders.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/pluginTest/sslheaders
+     Reason: Traceback (most recent call last):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/runtesttask.py", line 34, in __call__
+         tl = self.__logic.Run(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/runlogic.py", line 18, in Run
+         if not tmp.Start(obj):
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/runlogic/test.py", line 89, in Start
+         loadTest(self.__test)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/core/test.py", line 177, in loadTest
+         execFile(fileName, locals, locals)
+       File "/home/build/dev/trafficserver/tests/env-test/lib/python3.6/site-packages/autest/common/execfile.py", line 15, in execFile
+         exec (safeCompile(f.read(), fname), globals, locals)
+       File "/home/build/dev/trafficserver/tests/gold_tests/pluginTest/sslheaders/sslheaders.test.py", line 37, in <module>
+         ts = Test.MakeATSProcess("ts", select_ports=True, enable_tls=True)
+       File "/home/build/dev/trafficserver/tests/gold_tests/autest-site/trafficserver.test.ext", line 283, in MakeATSProcess
+         p.Ready = When.PortsOpen([p.Variables.port, p.Variables.ssl_port])
+     AttributeError: 'When' object has no attribute 'PortsOpen'
+
+[0m[1m Test: cert_update: [0m[31mFailed[0m[1m
+    File: cert_update.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/pluginTest/cert_update
+   Starting Test cert_update : No issues found - [0m[32mPassed[0m[1m
+      Reason: Started!
+   Process: server: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that any test passes - [0m[32mPassed[0m[1m
+        Reason: One or more tests passed
+     
+       Test : Checking that ReturnCode == None - [0m[31mFailed[0m[1m
+          Reason: Returned Value 0 != None
+       
+     
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       
+   Process: ts: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : RunCommand - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 2 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 2 == 2
+     file /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/sni.yaml : Appended file /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/sni.yaml - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/plugin.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/cert_update/ts/config/plugin.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Run: Server-Cert-Pre: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/0-tr-Default/stream.stderr.txt : Checking that /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/0-tr-Default/stream.stderr.txt matches gold/server-cert-pre.gold - [0m[32mPassed[0m[1m
+          Reason: Values match
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/0-tr-Default/stream.stderr.txt : Checking that /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/0-tr-Default/stream.stderr.txt matches gold/server-cert-pre.gold - [0m[32mPassed[0m[1m
+          Reason: Values match
+   Run: Server-Cert-Update: [0m[32mPassed[0m[1m
+     Process: Default: [0m[1mSkipped[0m[1m
+        Reason: Was not started
+     Process: Default: [0m[1mSkipped[0m[1m
+        Reason: Was not started
+   Run: Server-Cert-After: [0m[31mFailed[0m[1m
+     Starting TestRun 2-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 35 != 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/2-tr-Default/stream.stderr.txt : Checking that /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/2-tr-Default/stream.stderr.txt matches gold/server-cert-after.gold - [0m[31mFailed[0m[1m
+          Reason: File differences
+           Gold File : /home/build/dev/trafficserver/tests/gold_tests/pluginTest/cert_update/gold/server-cert-after.gold
+           Data File : /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/2-tr-Default/stream.stderr.txt
+           - ``bob@bar.com:4443:127.0.0.1 to DNS cache
+           ? ^^^^^^
+           
+           + * Added bar.com:4443:127.0.0.1 to DNS cache
+           ? ^^^^^^^^
+           
+             * Rebuilt URL to: https://bar.com:4443/
+             * Hostname bar.com was found in DNS cache
+             *   Trying 127.0.0.1...
+             * TCP_NODELAY set
+               % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                              Dload  Upload   Total   Spent    Left  Speed
+             
+               0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to bar.com (127.0.0.1) port 4443 (#0)
+             * ALPN, offering h2
+             * ALPN, offering http/1.1
+             * successfully set certificate verify locations:
+             *   CAfile: /etc/ssl/certs/ca-certificates.crt
+               CApath: /etc/ssl/certs
+             } [5 bytes data]
+             * (304) (OUT), TLS handshake, Client hello (1):
+             } [512 bytes data]
+             * (304) (IN), TLS alert, Server hello (2):
+             { [2 bytes data]
+             * error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure
+             * stopped the pause stream!
+             
+               0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+             * Closing connection 0
+             curl: (35) error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 35 != 0
+       file /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/2-tr-Default/stream.stderr.txt : Checking that /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/2-tr-Default/stream.stderr.txt matches gold/server-cert-after.gold - [0m[31mFailed[0m[1m
+          Reason: File differences
+           Gold File : /home/build/dev/trafficserver/tests/gold_tests/pluginTest/cert_update/gold/server-cert-after.gold
+           Data File : /home/build/dev/trafficserver/tests/_sandbox/cert_update/_output/2-tr-Default/stream.stderr.txt
+           - ``bob@bar.com:4443:127.0.0.1 to DNS cache
+           ? ^^^^^^
+           
+           + * Added bar.com:4443:127.0.0.1 to DNS cache
+           ? ^^^^^^^^
+           
+             * Rebuilt URL to: https://bar.com:4443/
+             * Hostname bar.com was found in DNS cache
+             *   Trying 127.0.0.1...
+             * TCP_NODELAY set
+               % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                              Dload  Upload   Total   Spent    Left  Speed
+             
+               0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to bar.com (127.0.0.1) port 4443 (#0)
+             * ALPN, offering h2
+             * ALPN, offering http/1.1
+             * successfully set certificate verify locations:
+             *   CAfile: /etc/ssl/certs/ca-certificates.crt
+               CApath: /etc/ssl/certs
+             } [5 bytes data]
+             * (304) (OUT), TLS handshake, Client hello (1):
+             } [512 bytes data]
+             * (304) (IN), TLS alert, Server hello (2):
+             { [2 bytes data]
+             * error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure
+             * stopped the pause stream!
+             
+               0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+             * Closing connection 0
+             curl: (35) error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure
+   Run: Client-Cert-Pre: [0m[1mSkipped[0m[1m
+      Reason: Test run 2-tr failed
+   Run: Client-Cert-Update: [0m[1mSkipped[0m[1m
+      Reason: Test run 2-tr failed
+   Run: Client-Cert-After: [0m[1mSkipped[0m[1m
+      Reason: Test run 2-tr failed
+
+[0m[1mTotal of 136 test
+[0m[1m  Unknown: 0
+[0m[1m  Exception: 38
+[0m[1m  Failed: 6
+[0m[1m  Warning: 0
+[0m[1m  Skipped: 3
+[0m[1m  Passed: 89
+[0m
