@@ -42,6 +42,14 @@ request_header2 = {"headers": "GET /age HTTP/1.1\r\nHost: www.example.com\r\n\r\
 response_header2 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: s-maxage=5\r\n\r\n", "timestamp": "12345678", "body": "test"}
 server.addResponse("sessionlog.json", request_header2, response_header2)
 
+request_header3 = {"headers": "GET /nocache HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
+response_header3 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: no-cache\r\n\r\n", "timestamp": "12345678", "body": "test"}
+server.addResponse("sessionlog.json", request_header3, response_header3)
+
+request_header4 = {"headers": "GET /nocache_and_age_1 HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
+response_header4 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: no-cache, s-maxage=5\r\n\r\n", "timestamp": "12345678", "body": "test"}
+server.addResponse("sessionlog.json", request_header4, response_header4)
+
 ###### ATS Configuration ######
 # ATS Configuration ( child node )
 ts.Disk.plugin_config.AddLine('xdebug.so')
@@ -73,7 +81,9 @@ ts2.Disk.records_config.update({
 })
 
 ###### Test Run ######
-# Test 1 - 1 : not included Cache-Control ( 1st ) is cache miss
+# Test 1 - 1 : not included Cache-Control is cache miss
+#              ApacheTrafficServerParent : cache-lookup is M(miss)
+#              ApacheTrafficServerChild  : cache-lookup is M(miss)
 tr = Test.AddTestRun()
 tr.Processes.Default.StartBefore(server)
 tr.Processes.Default.StartBefore(Test.Processes.ts)
@@ -83,23 +93,30 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/default_miss.gold"
 tr.StillRunningAfter = ts2
 
-# Test 1 - 2 : not included Cache-Control ( 2nd ) is cache miss
-tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/default'.format(port=ts.Variables.port)
-tr.Processes.Default.ReturnCode = 0
-tr.Processes.Default.Streams.stdout = "gold/default_miss.gold"
-tr.StillRunningAfter = ts2
-
-# Test 2 -1 : included Cache-Control "Cache-Control: s-maxage: 5" ( 1st )
+# Test 2 - 1 : included Cache-Control "Cache-Control: s-maxage=5" ( 1st ) is cache miss
+#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/age'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/age_miss.gold"
 tr.StillRunningAfter = ts2
 
-# Test 2 -2 : included Cache-Control "Cache-Control: s-maxage: 5" ( 2nd )
+# Test 2 - 2 : included Cache-Control "Cache-Control: s-maxage=5" ( 2nd ) is cache hit
+#              ApacheTrafficServerParent : cache-lookup is M(miss) , cache-fill is W(written into cache, new copy) , but this info is on ApacheTrafficServerChild's cache
+#              ApacheTrafficServerChild  : cache-lookup is H(in cache, fresh)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/age'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/age_hit.gold"
 tr.StillRunningAfter = ts2
+
+# Test 3 - 1 : included Cache-Control "Cache-Control: no-cache" is cache miss
+#              ApacheTrafficServerParent : cache-lookup is M(miss)
+#              ApacheTrafficServerChild  : cache-lookup is M(miss)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nocache_miss.gold"
+tr.StillRunningAfter = ts2
+
