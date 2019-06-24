@@ -50,6 +50,10 @@ request_header4 = {"headers": "GET /nocache_and_age_1 HTTP/1.1\r\nHost: www.exam
 response_header4 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: no-cache, s-maxage=5\r\n\r\n", "timestamp": "12345678", "body": "test"}
 server.addResponse("sessionlog.json", request_header4, response_header4)
 
+request_header5 = {"headers": "GET /nocache_and_age_2 HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
+response_header5 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: no-cache\r\nCache-Control: s-maxage=5\r\n\r\n", "timestamp": "12345678", "body": "test"}
+server.addResponse("sessionlog.json", request_header5, response_header5)
+
 ###### ATS Configuration ######
 # ATS Configuration ( child node )
 ts.Disk.plugin_config.AddLine('xdebug.so')
@@ -120,3 +124,38 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_miss.gold"
 tr.StillRunningAfter = ts2
 
+# Test 4 - 1 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 1st ) is cache miss
+#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache_and_age_1'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_miss_firsttime.gold"
+tr.StillRunningAfter = ts2
+
+# Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) is cache hit
+#              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
+#              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache_and_age_1'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_hit_secondtime.gold"
+tr.StillRunningAfter = ts2
+
+# Test 5 - 1 : included Cache-Control "Cache-Control: no-cache" and "Cache-Control: s-maxage=5" ( 1st ) is cache miss
+#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_miss_firsttime.gold"
+tr.StillRunningAfter = ts2
+
+# Test 5 - 2 : included Cache-Control "Cache-Control: no-cache" and "Cache-Control: s-maxage=5" ( 2nd ) is cache hit
+#              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
+#              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_hit_secondtime.gold"
+tr.StillRunningAfter = ts2
