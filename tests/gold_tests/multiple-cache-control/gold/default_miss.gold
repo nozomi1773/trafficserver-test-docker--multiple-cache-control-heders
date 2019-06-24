@@ -3,7 +3,7 @@ Content-Length: 4
 Date: ``
 Age: ``
 Connection: ``
-Via: ``
+Via: ``(ApacheTrafficServer/9.0.0 [uScMsSf pSeN:t cCMp sS])
 Server: ``
 X-Cache: miss
 ```
