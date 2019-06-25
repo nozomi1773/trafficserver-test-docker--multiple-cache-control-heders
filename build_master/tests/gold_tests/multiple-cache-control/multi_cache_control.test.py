@@ -74,6 +74,13 @@ ts.Disk.records_config.update({
    'proxy.config.http.insert_response_via_str' : 3,
    'proxy.config.http.request_via_str' : 'ApacheTrafficServerChild',
    'proxy.config.http.response_via_str' : 'ApacheTrafficServerChild',
+   'proxy.config.http.cache.ims_on_client_no_cache' : 0,
+   'proxy.config.cache.ram_cache.algorithm': 1,
+   'proxy.config.cache.ram_cache.use_seen_filter': 1,
+   'proxy.config.log.logging_enabled' : 3,
+   'proxy.config.diags.debug.enabled': 1,
+   'proxy.config.diags.debug.tags': 'http_trans',
+   'proxy.config.diags.output.debug': 'L',
 })
 
 # ATS Configuration ( parent node )
@@ -86,6 +93,13 @@ ts2.Disk.records_config.update({
    'proxy.config.http.insert_response_via_str' : 3,
    'proxy.config.http.request_via_str' : 'ApacheTrafficServerParent',
    'proxy.config.http.response_via_str' : 'ApacheTrafficServerParent',
+   'proxy.config.http.cache.ims_on_client_no_cache' : 0,
+   'proxy.config.cache.ram_cache.algorithm': 1,
+   'proxy.config.cache.ram_cache.use_seen_filter': 1,
+   'proxy.config.log.logging_enabled' : 3,
+   'proxy.config.diags.debug.enabled': 1,
+   'proxy.config.diags.debug.tags': 'http_trans',
+   'proxy.config.diags.output.debug': 'L',
 })
 
 ###### Test Run ######
