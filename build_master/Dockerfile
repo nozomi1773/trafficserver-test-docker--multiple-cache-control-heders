@@ -48,6 +48,7 @@ COPY run-trafficserver-tests.sh /usr/local/bin/
 
 USER root
 RUN chmod 777 /usr/local/bin/run-trafficserver-tests.sh
+RUN echo "127.0.0.1    origin.example.com" >> /etc/hosts
 
 USER build
 RUN /usr/local/bin/run-trafficserver-tests.sh

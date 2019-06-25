@@ -31,32 +31,179 @@ Test.ContinueOnFail = True
 # Define default ATS
 ts = Test.MakeATSProcess("ts")
 ts2 = Test.MakeATSProcess("ts2")
-server = Test.MakeOriginServer("server")
+server = Test.MakeOriginServer("server",lookup_key="{%X-Update}{PATH}")
 
 # Define test headers
-request_header1 = {"headers": "GET /default HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
-response_header1 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\n\r\n", "timestamp": "12345678", "body": "test"}
+request_header1 = {"headers":
+  "GET /default HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: no\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header1 = {"headers":
+  "HTTP/1.1 200 OK\r\n" +
+  "Content-Length: 4\r\n" +
+  "Connection: close\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": "test"
+}
 server.addResponse("sessionlog.json", request_header1, response_header1)
 
-request_header2 = {"headers": "GET /age HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
-response_header2 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: s-maxage=5\r\n\r\n", "timestamp": "12345678", "body": "test"}
+request_header2 = {"headers":
+  "GET /age HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: no\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header2 = {"headers":
+  "HTTP/1.1 200 OK\r\n" +
+  "Content-Length: 4\r\n" +
+  "Connection: close\r\n" +
+  "Cache-Control: s-maxage=5\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": "test"
+}
 server.addResponse("sessionlog.json", request_header2, response_header2)
 
-request_header3 = {"headers": "GET /nocache HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
-response_header3 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: no-cache\r\n\r\n", "timestamp": "12345678", "body": "test"}
+request_header3 = {"headers":
+  "GET /nocache HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: no\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header3 = {"headers":
+  "HTTP/1.1 200 OK\r\n" +
+  "Content-Length: 4\r\n" +
+  "Connection: close\r\n" +
+  "Cache-Control: no-cache\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": "test"
+}
 server.addResponse("sessionlog.json", request_header3, response_header3)
 
-request_header4 = {"headers": "GET /nocache_and_age_1 HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
-response_header4 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: no-cache, s-maxage=5\r\n\r\n", "timestamp": "12345678", "body": "test"}
+request_header4 = {"headers":
+  "GET /nocache_and_age_1 HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: no\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header4 = {"headers":
+  "HTTP/1.1 200 OK\r\n" +
+  "Content-Length: 4\r\n" +
+  "Connection: close\r\n" +
+  "Cache-Control: no-cache, s-maxage=5\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": "test"
+}
 server.addResponse("sessionlog.json", request_header4, response_header4)
 
-request_header5 = {"headers": "GET /nocache_and_age_2 HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
-response_header5 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: no-cache\r\nCache-Control: s-maxage=5\r\n\r\n", "timestamp": "12345678", "body": "test"}
+request_header5 = {"headers":
+  "GET /nocache_and_age_2 HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: no\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header5 = {"headers":
+  "HTTP/1.1 200 OK\r\n" +
+  "Content-Length: 4\r\n" +
+  "Connection: close\r\n" +
+  "Cache-Control: no-cache\r\n" +
+  "Cache-Control: s-maxage=5\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": "test"
+}
 server.addResponse("sessionlog.json", request_header5, response_header5)
 
-equest_header6 = {"headers": "GET /maxage HTTP/1.1\r\nHost: www.example.com\r\n\r\n", "timestamp": "12345678", "body": ""}
-response_header6 = {"headers": "HTTP/1.1 200 OK\r\nContent-Length: 4\r\nConnection: close\r\nCache-Control: max-age=5\r\n\r\n", "timestamp": "12345678", "body": "test"}
+request_header6 = {"headers":
+  "GET /maxage HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: no\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header6 = {"headers":
+  "HTTP/1.1 200 OK\r\n" +
+  "Content-Length: 4\r\n" +
+  "Connection: close\r\n" +
+  "Cache-Control: max-age=5\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": "test"
+ }
 server.addResponse("sessionlog.json", request_header6, response_header6)
+
+request_header6a = {"headers":
+  "GET /maxage1 HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: no\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header6a = {"headers":
+  "HTTP/1.1 200 OK\r\n" +
+  "Content-Length: 4\r\n" +
+  "Connection: close\r\n" +
+  "Cache-Control: max-age=0\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": "test"
+}
+server.addResponse("sessionlog.json", request_header6a, response_header6a)
+
+request_header6b = {"headers":
+  "GET /maxage2 HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: no\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header6b = {"headers":
+  "HTTP/1.1 200 OK\r\n" +
+  "Content-Length: 4\r\n" +
+  "Connection: close\r\n" +
+  "Cache-Control: max-age=0\r\n" +
+  "ETag: \"5ca41161-1a\"\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": "test"
+}
+server.addResponse("sessionlog.json", request_header6b, response_header6b)
+
+request_header6c = {"headers":
+  "GET /maxage2 HTTP/1.1\r\n" +
+  "Host: www.example.com\r\n" +
+  "X-Update: yes\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body" : "",
+}
+response_header6c = {"headers":
+  "HTTP/1.1 304 Not Modified\r\n" +
+  "Connection: close\r\n" +
+  "ETag: \"5ca41161-1a\"\r\n" +
+  "\r\n",
+  "timestamp": "12345678",
+  "body": None
+}
+server.addResponse("sessionlog.json", request_header6c, response_header6c)
 
 ###### ATS Configuration ######
 # ATS Configuration ( child node )
@@ -65,7 +212,7 @@ ts.Disk.remap_config.AddLine(
     'map http://www.example.com http://origin.example.com'
 )
 ts.Disk.parent_config.AddLine(
-   'dest_domain=origin.example.com parent="127.0.0.1:{port}"'.format(port=ts2.Variables.port)
+   'dest_domain=. parent="127.0.0.1:{port}"'.format(port=ts2.Variables.port)
 )
 ts.Disk.records_config.update({
    'proxy.config.http.parent_proxy.self_detect' : 0,
@@ -79,8 +226,9 @@ ts.Disk.records_config.update({
    'proxy.config.cache.ram_cache.use_seen_filter': 1,
    'proxy.config.log.logging_enabled' : 3,
    'proxy.config.diags.debug.enabled': 1,
-   'proxy.config.diags.debug.tags': 'http_trans',
+   'proxy.config.diags.debug.tags': 'http|dns',
    'proxy.config.diags.output.debug': 'L',
+   'proxy.config.hostdb.host_file.path' : '/etc/hosts',
 })
 
 # ATS Configuration ( parent node )
@@ -98,19 +246,20 @@ ts2.Disk.records_config.update({
    'proxy.config.cache.ram_cache.use_seen_filter': 1,
    'proxy.config.log.logging_enabled' : 3,
    'proxy.config.diags.debug.enabled': 1,
-   'proxy.config.diags.debug.tags': 'http_trans',
+   'proxy.config.diags.debug.tags': 'http|dns',
    'proxy.config.diags.output.debug': 'L',
+   'proxy.config.hostdb.host_file.path' : '/etc/hosts',
 })
 
 ###### Test Run ######
-# Test 1 - 1 : not included Cache-Control is cache miss
+# Test 1     : not included Cache-Control is cache miss
 #              ApacheTrafficServerParent : cache-lookup is M(miss)
 #              ApacheTrafficServerChild  : cache-lookup is M(miss)
 tr = Test.AddTestRun()
 tr.Processes.Default.StartBefore(server)
 tr.Processes.Default.StartBefore(Test.Processes.ts)
 tr.Processes.Default.StartBefore(Test.Processes.ts2)
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/default'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/default'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/default_miss.gold"
 tr.StillRunningAfter = ts2
@@ -119,7 +268,7 @@ tr.StillRunningAfter = ts2
 #              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
 #              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/age'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/age'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/age_miss.gold"
 tr.StillRunningAfter = ts2
@@ -128,16 +277,16 @@ tr.StillRunningAfter = ts2
 #              ApacheTrafficServerParent : cache-lookup is M(miss) , cache-fill is W(written into cache, new copy) , but this info is on ApacheTrafficServerChild's cache
 #              ApacheTrafficServerChild  : cache-lookup is H(in cache, fresh)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/age'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/age'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/age_hit.gold"
 tr.StillRunningAfter = ts2
 
-# Test 3 - 1 : included Cache-Control "Cache-Control: no-cache" is cache miss
+# Test 3     : included Cache-Control "Cache-Control: no-cache" is cache miss
 #              ApacheTrafficServerParent : cache-lookup is M(miss)
 #              ApacheTrafficServerChild  : cache-lookup is M(miss)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_miss.gold"
 tr.StillRunningAfter = ts2
@@ -146,7 +295,7 @@ tr.StillRunningAfter = ts2
 #              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
 #              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache_and_age_1'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_1'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_miss_firsttime.gold"
 tr.StillRunningAfter = ts2
@@ -155,7 +304,7 @@ tr.StillRunningAfter = ts2
 #              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
 #              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache_and_age_1'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_1'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_hit_secondtime.gold"
 tr.StillRunningAfter = ts2
@@ -163,9 +312,9 @@ tr.StillRunningAfter = ts2
 # Test 5 - 1 : included Cache-Control "Cache-Control: no-cache" and "Cache-Control: s-maxage=5" ( 1st ) is cache miss
 #              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
 #              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
-#              2 Cache-Control lines are integrated into 1 Cache-Control line
+#              2 Cache-Control lines are integrated into 1 Cache-Control line (It is a behavior of autest origin)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_miss_firsttime.gold"
 tr.StillRunningAfter = ts2
@@ -173,9 +322,9 @@ tr.StillRunningAfter = ts2
 # Test 5 - 2 : included Cache-Control "Cache-Control: no-cache" and "Cache-Control: s-maxage=5" ( 2nd ) is cache hit
 #              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
 #              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
-#              2 Cache-Control lines are integrated into 1 Cache-Control line
+#              2 Cache-Control lines are integrated into 1 Cache-Control line (It is a behavior of autest origin)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_hit_secondtime.gold"
 tr.StillRunningAfter = ts2
@@ -184,7 +333,7 @@ tr.StillRunningAfter = ts2
 #              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
 #              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/maxage'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/maxage_miss.gold"
 tr.StillRunningAfter = ts2
@@ -193,7 +342,55 @@ tr.StillRunningAfter = ts2
 #              ApacheTrafficServerParent : cache-lookup is M(miss) , cache-fill is W(written into cache, new copy) , but this info is on ApacheTrafficServerChild's cache
 #              ApacheTrafficServerChild  : cache-lookup is H(in cache, fresh)
 tr = Test.AddTestRun()
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/maxage'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/maxage_hit.gold"
+tr.StillRunningAfter = ts2
+
+# Test 6 - 3 : included Cache-Control "Cache-Control: max-age: 0" ( 1st ) is cache miss
+#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage1'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/maxage_miss.gold"
+tr.StillRunningAfter = ts2
+
+# Test 6 - 4 : included Cache-Control "Cache-Control: max-age: 0" ( 2nd ) and expired is cache stale , and origin return 200 OK
+#              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , but cache-fill is U(updated old cache copy), cache-type is C(cache hit, but config forces revalidate), cache-lookup-result is S(cache hit, but expired)
+#              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , but cache-fill is U(updated old cache copy), cache-type is C(cache hit, but config forces revalidate), cache-lookup-result is S(cache hit, but expired)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage1'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/maxage_stale.gold"
+tr.StillRunningAfter = ts2
+
+# Test 6 - 5 : included Cache-Control "Cache-Control: max-age: 0" ( 3rd ) and expired is cache stale , and origin return 200 OK
+#              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , but cache-fill is U(updated old cache copy), cache-type is C(cache hit, but config forces revalidate), cache-lookup-result is S(cache hit, but expired)
+#              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , but cache-fill is U(updated old cache copy), cache-type is C(cache hit, but config forces revalidate), cache-lookup-result is S(cache hit, but expired)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage1'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/maxage_stale.gold"
+tr.StillRunningAfter = ts2
+
+# Test 6 - 6 : included Cache-Control "Cache-Control: max-age: 0" and included ETag ( 1st ) is cache miss
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage2'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/maxage_miss.gold"
+tr.StillRunningAfter = ts2
+
+# Test 6 - 7 : included Cache-Control "Cache-Control: max-age: 0" and included ETag ( 2nd ) and expired is cache stale , and origin return 200 OK
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage2'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/maxage_stale2.gold"
+tr.StillRunningAfter = ts2
+
+# Test 6 - 8 : included Cache-Control "Cache-Control: max-age: 0" and included ETag ( 3rd ) and expired is cache stale , and origin return 304 Not Modified
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: yes" http://localhost:{port}/maxage2'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/maxage_stale3.gold"
 tr.StillRunningAfter = ts2
