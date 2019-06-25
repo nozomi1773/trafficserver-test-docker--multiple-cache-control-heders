@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Content-Length: 4
+Cache-Control: no-cache, s-maxage=5
+Date: ``
+Age: ``
+Via: http/1.1 `` (ApacheTrafficServerParent [uScSsSfUpSeN:t cCSp sS]), http/1.1 `` (ApacheTrafficServerChild [uScSsSfUpSeN:t cCSpSs ])
+Server: ATS/8.0.4
+Connection: keep-alive
+X-Cache: hit-fresh
+``
+test``
