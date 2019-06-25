@@ -1,0 +1,545 @@
+=== test target trafficserver  ===
+ 8.0.4-rc0 
+
+=== test results ===
+[1mRunning Test basic:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test basic-manager:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cache-control:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cache-generation-clear:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cache-generation-disjoint:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cache_and_req_body:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test ccid_ctid:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test chunked_encoding:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test compress:[0m[1m [0m[1mSkipped[0m[1m
+[0m[93mWarning: Skipping test compress because:
+ ATS feature not enabled: TS_HAS_BROTLI
+[0m[1mRunning Test config:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test copy_config:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test copy_config2:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test cppapi:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test custom-log:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test deny0:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test disjoint-wait-for-cache:[0m[1m [0m[1mSkipped[0m[1m
+[0m[93mWarning: Skipping test disjoint-wait-for-cache because:
+ This test fails at the moment as is turned off
+[0m[1mRunning Test domain-blacklist-30x:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test double:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test double_h2:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test forwarded:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1mF[0m[1mF[0m[1m [0m[31mFailed[0m[1m
+[0m[1mRunning Test general-connection-failure-502:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test header_rewrite:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test hsts:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http2:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http204_response:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http204_response_plugin:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http2_priority:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http304_response:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http408:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http_head_no_origin:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test http_with_origin:[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test httpbin:[0m[1m [0m[1mSkipped[0m[1m
+[0m[93mWarning: Skipping test httpbin because:
+ gunicorn needs be installed with httpbin package for this extension to run
+[0m[1mRunning Test log-field:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test multiplexer:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test normalize_ae:[0m[1m [0m[1mSkipped[0m[1m
+[0m[93mWarning: Skipping test normalize_ae because:
+ ATS feature not enabled: TS_HAS_BROTLI
+[0m[1mRunning Test null_transform:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test openclose:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test openclose_h2:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test redirect:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test redirect_post:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test remap_http:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test remap_https:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_error:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_init:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_manager:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_remove:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_use:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test runroot_verify:[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test slow_post:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test sslheaders:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test syntax:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_100_0:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_100_1:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_100_10:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_1_0:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_1_1:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_1_10:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_2_0:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_2_1:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_2_10:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_32_0:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_32_1:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test thread_32_10:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks10:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks11:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks12:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks2:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks3:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks4:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks6:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks7:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks8:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_hooks9:[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test tls_ticket:[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test url_sig:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1mRunning Test via:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1mF[0m[1mF[0m[1m [0m[31mFailed[0m[1m
+[0m[1mRunning Test x_remap:[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m.[0m[1m [0m[32mPassed[0m[1m
+[0m[1m
+Generating Report: --------------
+[0m[1m4 Tests were skipped:
+[0m[1m--------------------------------------------------------------------------------
+[0m[1m Test "httpbin" Skipped
+    File: httpbin.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/h2
+[0m[1m  Reason: gunicorn needs be installed with httpbin package for this extension to run
+[0m[1m
+[0m[1m Test "normalize_ae" Skipped
+    File: normalize_ae.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/headers
+[0m[1m  Reason: ATS feature not enabled: TS_HAS_BROTLI
+[0m[1m
+[0m[1m Test "disjoint-wait-for-cache" Skipped
+    File: disjoint-wait-for-cache.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/cache
+[0m[1m  Reason: This test fails at the moment as is turned off
+[0m[1m
+[0m[1m Test "compress" Skipped
+    File: compress.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/pluginTest/compress
+[0m[1m  Reason: ATS feature not enabled: TS_HAS_BROTLI
+[0m[1m
+[0m[1m Test: via: [0m[31mFailed[0m[1m
+    File: via.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/headers
+   file via.log : Checking that via.log matches via.gold - [0m[31mFailed[0m[1m
+      Reason: File differences
+       Gold File : /home/build/dev/trafficserver/tests/gold_tests/headers/via.gold
+       Data File : /home/build/dev/trafficserver/tests/_sandbox/via/via.log
+         Via: http/1.1 = http/1.1 tcp ipv4
+         Via: http/1.0 = http/1.0 tcp ipv4
+         Via: https/2 = http/1.1 h2 tls/1.3 tcp ipv4
+         Via: https/1.1 = http/1.1 tls/1.3 tcp ipv4
+       - Via: http/1.1 = http/1.1 tcp ipv6
+       - Via: https/1.1 = http/1.1 tls/1.{} tcp ipv6
+   Starting Test via : No issues found - [0m[32mPassed[0m[1m
+      Reason: Started!
+   Process: ts: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 0 == 0
+     file /home/build/dev/trafficserver/tests/_sandbox/via/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/via/ts/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/via/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/via/ts/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/via/ts/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: server: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that any test passes - [0m[32mPassed[0m[1m
+        Reason: One or more tests passed
+     
+       Test : Checking that ReturnCode == None - [0m[31mFailed[0m[1m
+          Reason: Returned Value 0 != None
+       
+     
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Run: 0-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 1-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 2-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 3-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 4-tr: [0m[31mFailed[0m[1m
+     Test : Checking that True == _isRunningAfter - [0m[32mPassed[0m[1m
+        Reason: Returned Value: True == _isRunningAfter
+     Starting TestRun 4-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+   Run: 5-tr: [0m[31mFailed[0m[1m
+     Test : Checking that True == _isRunningAfter - [0m[32mPassed[0m[1m
+        Reason: Returned Value: True == _isRunningAfter
+     Starting TestRun 5-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+
+[0m[1m Test: forwarded: [0m[31mFailed[0m[1m
+    File: forwarded.test.py
+    Directory: /home/build/dev/trafficserver/tests/gold_tests/headers
+   file forwarded.log : Checking that forwarded.log matches forwarded.gold - [0m[31mFailed[0m[1m
+      Reason: File differences
+       Gold File : /home/build/dev/trafficserver/tests/gold_tests/headers/forwarded.gold
+       Data File : /home/build/dev/trafficserver/tests/_sandbox/forwarded/forwarded.log
+         FORWARDED MISSING
+         -
+         FORWARDED MISSING
+         -
+         for=127.0.0.1
+         -
+         by=127.0.0.1
+         -
+         by=unknown
+         -
+         by=Poxy_Proxy
+         -
+         __BY_EQUAL_UUID__
+         -
+         proto=http
+         -
+         host=www.forwarded-host.com
+         -
+         connection=http
+         -
+         connection=http/1.1
+         -
+         connection=http/1.1-tcp-ipv4
+         -
+         __BY_EQUAL_UUID__
+         -
+         for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=http;host=www.no-oride.com;connection=http;connection=http/1.1;connection=http/1.1-tcp-ipv4
+         -
+         for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=http;host=www.no-oride.com;connection=http;connection=http/1.0;connection=http/1.0-tcp-ipv4
+         -
+         for=0.6.6.6
+         for=_argh, for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=http;host=www.no-oride.com;connection=http;connection=http/1.0;connection=http/1.0-tcp-ipv4
+         -
+         for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=https;host=www.no-oride.com;connection=https;connection=https/2;connection=http/1.1-h2-tls/1.3-tcp-ipv4
+         -
+         for=127.0.0.1;by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by=127.0.0.1;proto=https;host=www.no-oride.com;connection=https;connection=https/1.1;connection=http/1.1-tls/1.3-tcp-ipv4
+         -
+       - for="[::1]";by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by="[::1]";proto=http;host=www.no-oride.com;connection=http;connection=http/1.1;connection=http/1.1-tcp-ipv6
+       - -
+       - for="[::1]";by=unknown;by=Poxy_Proxy;__BY_EQUAL_UUID__;by="[::1]";proto=https;host=www.no-oride.com;connection=https;connection=https/1.1;connection=http/1.1-tls/1.{}-tcp-ipv6
+       - -
+   Starting Test forwarded : No issues found - [0m[32mPassed[0m[1m
+      Reason: Started!
+   Process: server: [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Test : Checking that any test passes - [0m[32mPassed[0m[1m
+        Reason: One or more tests passed
+     
+       Test : Checking that ReturnCode == None - [0m[31mFailed[0m[1m
+          Reason: Returned Value 0 != None
+       
+     
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+       
+   Process: ts: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 0 == 0
+     file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: ts2: [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Copy - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : MakeDir - [0m[32mPassed[0m[1m
+     Setting up : Chown - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : Lamda - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Setting up : CopyAs - [0m[32mPassed[0m[1m
+     Test : Checking that ReturnCode == 2 - [0m[32mPassed[0m[1m
+        Reason: Returned Value: 2 == 2
+     file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/log/diags.log excludes expression
+     file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/log/diags.log : diags.log should not contain errors - [0m[32mPassed[0m[1m
+        Reason: Contents of /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/log/diags.log excludes expression
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/records.config : Writing config file records.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/ssl_multicert.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/ssl_multicert.config - [0m[32mPassed[0m[1m
+        Reason: Success
+     Appending File /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/remap.config : Appended file /home/build/dev/trafficserver/tests/_sandbox/forwarded/ts2/config/remap.config - [0m[32mPassed[0m[1m
+        Reason: Success
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Process: Default: [0m[1mSkipped[0m[1m
+      Reason: Was not started
+   Run: 0-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 1-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 2-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 3-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 4-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 5-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 6-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 7-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 8-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 9-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 10-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 11-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 12-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 13-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 14-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 15-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 16-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 17-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 18-tr: [0m[32mPassed[0m[1m
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+     Process: Default: [0m[32mPassed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[32mPassed[0m[1m
+          Reason: Returned Value: 0 == 0
+   Run: 19-tr: [0m[31mFailed[0m[1m
+     Starting TestRun 19-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+   Run: 20-tr: [0m[31mFailed[0m[1m
+     Starting TestRun 20-tr : No Issues found - [0m[32mPassed[0m[1m
+        Reason: Started!
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+     Process: Default: [0m[31mFailed[0m[1m
+       Test : Checking that ReturnCode == 0 - [0m[31mFailed[0m[1m
+          Reason: Returned Value 7 != 0
+
+[0m[1mTotal of 79 test
+[0m[1m  Unknown: 0
+[0m[1m  Exception: 0
+[0m[1m  Failed: 2
+[0m[1m  Warning: 0
+[0m[1m  Skipped: 4
+[0m[1m  Passed: 73
+[0m
