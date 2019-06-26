@@ -402,8 +402,9 @@ tr.StillRunningAfter = ts2
 #                               cache-fill is U(updated old cache copy) , proxy-info is S(served) , error-codes is N(no error) ,
 #                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
 #                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+#   NOTE: 2 Cache-Control lines are integrated into 1 Cache-Control line (It is a behavior of autest origin)
 #
-#  Same as Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) and origin return 200 OK is cache hit
+#   Same as Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) and origin return 200 OK is cache hit
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
