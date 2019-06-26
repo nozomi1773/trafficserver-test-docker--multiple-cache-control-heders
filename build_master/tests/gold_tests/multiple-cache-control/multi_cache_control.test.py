@@ -253,8 +253,17 @@ ts2.Disk.records_config.update({
 
 ###### Test Run ######
 # Test 1     : not included Cache-Control is cache miss
-#              ApacheTrafficServerParent : cache-lookup is M(miss)
-#              ApacheTrafficServerChild  : cache-lookup is M(miss)
+#   ApacheTrafficServerParent [uScMsSf pSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSf pSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
 tr = Test.AddTestRun()
 tr.Processes.Default.StartBefore(server)
 tr.Processes.Default.StartBefore(Test.Processes.ts)
@@ -265,8 +274,17 @@ tr.Processes.Default.Streams.stdout = "gold/default_miss.gold"
 tr.StillRunningAfter = ts2
 
 # Test 2 - 1 : included Cache-Control "Cache-Control: s-maxage=5" ( 1st ) is cache miss
-#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
-#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/age'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -274,8 +292,17 @@ tr.Processes.Default.Streams.stdout = "gold/age_miss.gold"
 tr.StillRunningAfter = ts2
 
 # Test 2 - 2 : included Cache-Control "Cache-Control: s-maxage=5" ( 2nd ) is cache hit
-#              ApacheTrafficServerParent : cache-lookup is M(miss) , cache-fill is W(written into cache, new copy) , but this info is on ApacheTrafficServerChild's cache
-#              ApacheTrafficServerChild  : cache-lookup is H(in cache, fresh)
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS], ApacheTrafficServerChild [uScHs f p eN:t cCHp s ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is H(in cache, fresh) , server-info is blank(no server connection needed) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is blank(=not recorded) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is H(cache hit) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is blank(no server connection)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/age'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -283,8 +310,19 @@ tr.Processes.Default.Streams.stdout = "gold/age_hit.gold"
 tr.StillRunningAfter = ts2
 
 # Test 3     : included Cache-Control "Cache-Control: no-cache" is cache miss
-#              ApacheTrafficServerParent : cache-lookup is M(miss)
-#              ApacheTrafficServerChild  : cache-lookup is M(miss)
+#   ApacheTrafficServerParent [uScMsSf pSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSf pSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+#
+#   Same as : Test 1 - not included Cache-Control is cache miss
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -292,15 +330,27 @@ tr.Processes.Default.Streams.stdout = "gold/nocache_miss.gold"
 tr.StillRunningAfter = ts2
 
 # Test 4 - 1 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 1st ) is cache miss
-#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
-#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+#
+#   Same as Test 2 - 1 : included Cache-Control "Cache-Control: s-maxage=5" ( 1st ) is cache miss
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_1'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_miss_firsttime.gold"
 tr.StillRunningAfter = ts2
 
-# Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) is cache hit
+# Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) and origin return 200 OK is cache hit
+#   ApacheTrafficServerParent [uScSsSfUpSeN:t cCSp sS] , ApacheTrafficServerChild [uScSsSfUpSeN:t cCSpSs ]
 #              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
 #              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
 tr = Test.AddTestRun()
@@ -310,9 +360,22 @@ tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_hit_secondtime.gold"
 tr.StillRunningAfter = ts2
 
 # Test 5 - 1 : included Cache-Control "Cache-Control: no-cache" and "Cache-Control: s-maxage=5" ( 1st ) is cache miss
-#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
-#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
-#              2 Cache-Control lines are integrated into 1 Cache-Control line (It is a behavior of autest origin)
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+#
+#   NOTE: 2 Cache-Control lines are integrated into 1 Cache-Control line (It is a behavior of autest origin)
+#
+#   Same as Test 4 - 1 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 1st ) is cache miss
+#   Same as Test 2 - 1 : included Cache-Control "Cache-Control: s-maxage=5" ( 1st ) is cache miss
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -320,9 +383,6 @@ tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_miss_firsttime.gold"
 tr.StillRunningAfter = ts2
 
 # Test 5 - 2 : included Cache-Control "Cache-Control: no-cache" and "Cache-Control: s-maxage=5" ( 2nd ) is cache hit
-#              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
-#              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , cache-fill is U(updated old cache copy)
-#              2 Cache-Control lines are integrated into 1 Cache-Control line (It is a behavior of autest origin)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -330,8 +390,15 @@ tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_hit_secondtime.gold"
 tr.StillRunningAfter = ts2
 
 # Test 6 - 1 : included Cache-Control "Cache-Control: max-age: 5" ( 1st ) is cache miss
-#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
-#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -348,8 +415,19 @@ tr.Processes.Default.Streams.stdout = "gold/maxage_hit.gold"
 tr.StillRunningAfter = ts2
 
 # Test 6 - 3 : included Cache-Control "Cache-Control: max-age: 0" ( 1st ) is cache miss
-#              ApacheTrafficServerParent : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
-#              ApacheTrafficServerChild  : cache-lookup is M(miss) , but cache-fill is W(written into cache, new copy)
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+#
+#   Same as Test 2 - 1 : included Cache-Control "Cache-Control: s-maxage=5" ( 1st ) is cache miss
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage1'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -366,8 +444,15 @@ tr.Processes.Default.Streams.stdout = "gold/maxage_stale.gold"
 tr.StillRunningAfter = ts2
 
 # Test 6 - 5 : included Cache-Control "Cache-Control: max-age: 0" ( 3rd ) and expired is cache stale , and origin return 200 OK
-#              ApacheTrafficServerParent : cache-lookup is S(in cache, stale) , but cache-fill is U(updated old cache copy), cache-type is C(cache hit, but config forces revalidate), cache-lookup-result is S(cache hit, but expired)
-#              ApacheTrafficServerChild  : cache-lookup is S(in cache, stale) , but cache-fill is U(updated old cache copy), cache-type is C(cache hit, but config forces revalidate), cache-lookup-result is S(cache hit, but expired)
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is S(in cache, stale) , server-info is S(served) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is S(in cache, stale) , server-info is S(served) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage1'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -375,6 +460,20 @@ tr.Processes.Default.Streams.stdout = "gold/maxage_stale.gold"
 tr.StillRunningAfter = ts2
 
 # Test 6 - 6 : included Cache-Control "Cache-Control: max-age: 0" and included ETag ( 1st ) is cache miss
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+#
+#   Same as Test 2 - 1 : included Cache-Control "Cache-Control: s-maxage=5" ( 1st ) is cache miss
+#   Same as Test 6 - 3 : included Cache-Control "Cache-Control: max-age: 0" ( 1st ) is cache miss
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -382,6 +481,15 @@ tr.Processes.Default.Streams.stdout = "gold/maxage_miss.gold"
 tr.StillRunningAfter = ts2
 
 # Test 6 - 7 : included Cache-Control "Cache-Control: max-age: 0" and included ETag ( 2nd ) and expired is cache stale , and origin return 200 OK
+#   ApacheTrafficServerParent : client-info is I(If Modified Since,IMS) , cache-lookup is S(in cache, stale) , server-info is S(served) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is N(not-modified) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/maxage2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -389,6 +497,15 @@ tr.Processes.Default.Streams.stdout = "gold/maxage_stale2.gold"
 tr.StillRunningAfter = ts2
 
 # Test 6 - 8 : included Cache-Control "Cache-Control: max-age: 0" and included ETag ( 3rd ) and expired is cache stale , and origin return 304 Not Modified
+#   ApacheTrafficServerParent : client-info is I(If Modified Since,IMS) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is N(not-modified) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: yes" http://localhost:{port}/maxage2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
