@@ -12,8 +12,25 @@ RUN ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime \
  && apt-get install -y python3 python3-virtualenv virtualenv python3-dev curl netcat net-tools \
  && useradd -r -m -s /bin/bash build
 
-USER build
+# Install Origin (Nginx)
+USER root
+COPY nginx_config/default /etc/nginx/sites-available/default
+RUN apt install -y nginx \
+ && nginx \
+ && mkdir /var/www/html/test_a && echo "test" > /var/www/html/test_a/index.html \
+ && mkdir /var/www/html/test_b && echo "test" > /var/www/html/test_b/index.html \
+ && mkdir /var/www/html/test_c && echo "test" > /var/www/html/test_c/index.html \
+ && mkdir /var/www/html/test_d && echo "test" > /var/www/html/test_d/index.html \
+ && mkdir /var/www/html/test_e && echo "test" > /var/www/html/test_e/index.html \
+ && mkdir /var/www/html/test_f && echo "test" > /var/www/html/test_f/index.html \
+ && mkdir /var/www/html/test_g && echo "test" > /var/www/html/test_g/index.html \
+ && mkdir /var/www/html/test_h && echo "test" > /var/www/html/test_h/index.html \
+ && mkdir /var/www/html/test_i && echo "test" > /var/www/html/test_i/index.html \
+ && mkdir /var/www/html/test_j && echo "test" > /var/www/html/test_j/index.html \
+ && mkdir /var/www/html/test_k && echo "test" > /var/www/html/test_k/index.html \
+ && nginx -s reload
 
+USER build
 # Get the source and configure trafficserver
 RUN mkdir -p ~/dev \
  && cd ~/dev \

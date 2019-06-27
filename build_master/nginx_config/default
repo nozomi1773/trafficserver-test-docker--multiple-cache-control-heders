@@ -1,0 +1,46 @@
+server {
+	listen 80 default_server;
+
+	root /var/www/html;
+
+	index index.html index.htm;
+
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+	location /test_a {
+		add_header Cache-Control 'public';
+	}
+	location /test_b {
+		add_header Cache-Control 'max-age=5';
+	}
+	location /test_c {
+		add_header Cache-Control 'max-age=5, public';
+	}
+	location /test_d {
+	}
+		add_header Cache-Control 'max-age=5, public, no-cache';
+	location /test_e {
+		add_header Cache-Control 'max-age=5, public';
+		add_header Cache-Control 'no-cache';
+	}
+	location /test_f {
+		add_header Cache-Control 'no-cache';
+		add_header Cache-Control 'max-age=5, public';
+	}
+	location /test_g {
+		add_header Cache-Control 'public';
+		add_header Cache-Control 'max-age=5';
+		add_header Cache-Control 'no-cache';
+	}
+	location /test_h {
+		add_header Cache-Control 'max-age=5, public';
+		add_header Cache-Control 'max-age=0, public';
+	}
+	location /test_i {
+		add_header Cache-Control 'max-age=0, public';
+		add_header Cache-Control 'max-age=5, public';
+	}
+}
