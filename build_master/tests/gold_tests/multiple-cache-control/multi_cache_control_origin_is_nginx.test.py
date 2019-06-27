@@ -367,6 +367,30 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_hit5.gold"
 tr.StillRunningAfter = ts2
 
+#####################################################################################################
+# NOTE : in one before pattern , lost Cache-Control headers 2nd line ("Cache-Control: max-age=5, public")
+#####################################################################################################
+# Test 6 - 2 : included "Cache-Control: no-cache" and "Cache-Control: max-age=5, public" ( 2nd ) is fresh-hit , but cache-fill is U
+#   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
+#
+#   ApacheTrafficServerParent : client-info is I(If Modified Since) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is N(not-modified) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_f/index.html'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_hit6.gold"
+tr.StillRunningAfter = ts2
+
+
+
+
 
 
 
