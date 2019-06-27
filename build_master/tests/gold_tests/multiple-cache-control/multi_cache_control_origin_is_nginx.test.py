@@ -347,8 +347,7 @@ tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_miss3.gold"
 tr.StillRunningAfter = ts2
 
 #####################################################################################################
-# NOTE : in one before pattern , lost Cache-Control headers 2nd line ("Cache-Control: max-age=5, public")
-#        in this pattern , max-age=5 is not working
+# NOTE : in this pattern , lost Cache-Control headers 2nd line ("Cache-Control: max-age=5, public")
 #####################################################################################################
 # Test 6 - 2 : included "Cache-Control: no-cache" and "Cache-Control: max-age=5, public" ( 2nd ) is fresh-hit , but cache-fill is U
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
