@@ -215,7 +215,7 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_miss.gold"
 tr.StillRunningAfter = ts2
 
-# Test 4 - 2 : included "Cache-Control: max-age=5, public, no-cache" ( 2nd ) is fresh-hit , but cache-fill is U
+# Test 4 - 2 : included "Cache-Control: max-age=5, public, no-cache" ( 2nd ) is hit-fresh , but cache-fill is U
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
 #
 #   ApacheTrafficServerParent : client-info is I(If Modified Since) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
@@ -233,7 +233,7 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_hit.gold"
 tr.StillRunningAfter = ts2
 
-# Test 4 - 3 : included "Cache-Control: max-age=5, public, no-cache" ( 3rd ) is fresh-hit , but cache-fill is U
+# Test 4 - 3 : included "Cache-Control: max-age=5, public, no-cache" ( 3rd ) is hit-fresh , but cache-fill is U
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
 #
 #   ApacheTrafficServerParent : client-info is I(If Modified Since) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
@@ -272,7 +272,7 @@ tr.StillRunningAfter = ts2
 #####################################################################################################
 # NOTE : in this pattern , lost Cache-Control headers 2nd line ("Cache-Control: no-cache")
 #####################################################################################################
-# Test 5 - 2 : included "Cache-Control: max-age=5, public" and "Cache-Control: no-cache" ( 2nd ) is is fresh-hit , but cache-fill is U
+# Test 5 - 2 : included "Cache-Control: max-age=5, public" and "Cache-Control: no-cache" ( 2nd ) is is hit-fresh , but cache-fill is U
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
 #
 #   ApacheTrafficServerParent : client-info is I(If Modified Since) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
@@ -294,7 +294,7 @@ tr.StillRunningAfter = ts2
 # NOTE : in one before pattern , lost Cache-Control headers 2nd line ("Cache-Control: no-cache")
 #        in this pattern , no-cache control is not working
 #####################################################################################################
-# Test 5 - 2 : included "Cache-Control: max-age=5, public" and "Cache-Control: no-cache" ( 2nd ) is is fresh-hit
+# Test 5 - 2 : included "Cache-Control: max-age=5, public" and "Cache-Control: no-cache" ( 2nd ) is is hit-fresh
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScHs f p eN:t cCHp s ])
 #
 #   ApacheTrafficServerParent : this via info is child's cache
@@ -313,7 +313,7 @@ tr.StillRunningAfter = ts2
 # NOTE : in two before pattern , lost Cache-Control headers 2nd line ("Cache-Control: no-cache")
 #        in this pattern , no-cache control is not working
 #####################################################################################################
-# Test 5 - 3 : included "Cache-Control: max-age=5, public" and "Cache-Control: no-cache" ( 3rd ) is is fresh-hit
+# Test 5 - 3 : included "Cache-Control: max-age=5, public" and "Cache-Control: no-cache" ( 3rd ) is is hit-fresh
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScRs f p eN:t cCHp s ])
 #
 #   ApacheTrafficServerParent : this via info is child's cache
@@ -350,7 +350,7 @@ tr.StillRunningAfter = ts2
 # NOTE : in this pattern , lost Cache-Control headers 2nd line ("Cache-Control: max-age=5, public")
 #        client response don't have cacheable Cache-Control , but cache hit
 #####################################################################################################
-# Test 6 - 2 : included "Cache-Control: no-cache" and "Cache-Control: max-age=5, public" ( 2nd ) is fresh-hit , but cache-fill is U
+# Test 6 - 2 : included "Cache-Control: no-cache" and "Cache-Control: max-age=5, public" ( 2nd ) is hit-fresh , but cache-fill is U
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
 #
 #   ApacheTrafficServerParent : client-info is I(If Modified Since) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
@@ -372,7 +372,7 @@ tr.StillRunningAfter = ts2
 # NOTE : in one before pattern , lost Cache-Control headers 2nd line ("Cache-Control: max-age=5, public")
 #        client response don't have cacheable Cache-Control , but cache hit
 #####################################################################################################
-# Test 6 - 3 : included "Cache-Control: no-cache" and "Cache-Control: max-age=5, public" ( 3rd ) is fresh-hit , but cache-fill is U
+# Test 6 - 3 : included "Cache-Control: no-cache" and "Cache-Control: max-age=5, public" ( 3rd ) is hit-fresh , but cache-fill is U
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
 #
 #   ApacheTrafficServerParent : client-info is I(If Modified Since) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
@@ -412,7 +412,7 @@ tr.StillRunningAfter = ts2
 # NOTE : in this pattern , lost Cache-Control headers 2nd line ("Cache-Control: max-age=5") and 3rd line ("Cache-Control: no-cache")
 #        client response don't have cacheable Cache-Control , but cache hit
 #####################################################################################################
-# Test 7 - 2 : included "Cache-Control: public" and "Cache-Control: max-age=5" and "Cache-Control: no-cache" ( 2nd ) is cache fresh-hit , but cache-fill is U
+# Test 7 - 2 : included "Cache-Control: public" and "Cache-Control: max-age=5" and "Cache-Control: no-cache" ( 2nd ) is cache hit-fresh , but cache-fill is U
 #   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
 #
 #   ApacheTrafficServerParent : client-info is I(If Modified Since) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
@@ -434,7 +434,7 @@ tr.StillRunningAfter = ts2
 # NOTE : in two before pattern , lost Cache-Control headers 2nd line ("Cache-Control: no-cache")
 #        in this pattern , no-cache control is not working
 #####################################################################################################
-# Test 7 - 3  : included "Cache-Control: public" and "Cache-Control: max-age=5" and "Cache-Control: no-cache" ( 3rd ) is cache fresh-hit
+# Test 7 - 3  : included "Cache-Control: public" and "Cache-Control: max-age=5" and "Cache-Control: no-cache" ( 3rd ) is cache hit-fresh
 #   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS], ApacheTrafficServerChild [uScHs f p eN:t cCHp s ]
 #
 #   ApacheTrafficServerParent : this via info is child's cache
@@ -449,3 +449,96 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_hit8.gold"
 tr.StillRunningAfter = ts2
 
+# Test 8 - 1 : included "Cache-Control: max-age=5, public" and "Cache-Control: max-age=0, public" (1 st ) is cache miss , but cache-fill is W
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_h/index.html'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nginx_age5_age0_miss.gold"
+tr.StillRunningAfter = ts2
+
+#####################################################################################################
+# NOTE : in this pattern , lost Cache-Control headers 2nd line ("Cache-Control: max-age=0, public")
+#        this cache age is control by lost 2nd line's value max-age=0
+#####################################################################################################
+# Test 8 - 2 : included "Cache-Control: max-age=5, public" and "Cache-Control: max-age=0, public" ( 2nd ) is hit-stale , cache-fill is U
+#   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScSsNfUpSeN:t cCSpSs ]
+#
+#   ApacheTrafficServerParent : client-info is I(If Modified Since) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is N(not-modified) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is S(in cache, stale) , server-info is N(not-modified) ,
+#                               cache-fill is U(updated old cache copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is S(cache hit, but expired) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_h/index.html'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nginx_age5_age0_stale.gold"
+tr.StillRunningAfter = ts2
+
+#####################################################################################################
+# NOTE : in one before pattern , lost Cache-Control headers 2nd line ("Cache-Control: max-age=0, public")
+#####################################################################################################
+# Test 8 - 3 : included "Cache-Control: max-age=5, public" and "Cache-Control: max-age=0, public" ( 3rd ) is hit-fresh
+#   ApacheTrafficServerParent [uIcSsNfUpNeN:t cCSp sS] , ApacheTrafficServerChild [uScHs f p eN:t cCHp s ])
+#
+#   ApacheTrafficServerParent : this via info is child's cache
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is H(in cache, fresh) , server-info is blank(no server connection needed) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is blank(=not recorded) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is H(cache hit) ,
+#                                parent-proxy is blank(no parent proxy) , server-conn-info is blank(no server connection)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_h/index.html'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_hit3.gold"
+tr.StillRunningAfter = ts2
+
+# Test 9 - 1 : included "Cache-Control: max-age=0, public" and "Cache-Control: max-age=5, public" (1 st ) is cache miss , but cache-fill is W
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_h/index.html'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nginx_age0_age5_miss.gold"
+tr.StillRunningAfter = ts2
+
+#####################################################################################################
+# NOTE : this cache age is control by 2nd line's value max-age=5
+#####################################################################################################
+# Test 9 - 2 : included "Cache-Control: max-age=0, public" and "Cache-Control: max-age=5, public" ( 2nd ) is hit-fresh
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScHs f p eN:t cCHp s ]
+#
+#  ApacheTrafficServerParent : this via info is child's cache
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is H(in cache, fresh) , server-info is blank(no server connection needed) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is blank(=not recorded) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is H(cache hit) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is blank(no server connection)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_h/index.html'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nginx_age0_age5_hit.gold"
+tr.StillRunningAfter = ts2
