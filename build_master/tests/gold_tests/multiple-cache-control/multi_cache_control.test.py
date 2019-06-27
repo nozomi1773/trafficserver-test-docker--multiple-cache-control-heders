@@ -291,7 +291,7 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/age_miss.gold"
 tr.StillRunningAfter = ts2
 
-# Test 2 - 2 : included Cache-Control "Cache-Control: s-maxage=5" ( 2nd ) is cache hit
+# Test 2 - 2 : included Cache-Control "Cache-Control: s-maxage=5" ( 2nd ) is cache fresh-hit
 #   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS], ApacheTrafficServerChild [uScHs f p eN:t cCHp s ]
 #
 #   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
@@ -349,7 +349,7 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_miss_firsttime.gold"
 tr.StillRunningAfter = ts2
 
-# Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) and origin return 200 OK is cache hit
+# Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) and origin return 200 OK is cache fresh-hit
 #   ApacheTrafficServerParent [uScSsSfUpSeN:t cCSp sS] , ApacheTrafficServerChild [uScSsSfUpSeN:t cCSpSs ]
 #
 #   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is S(in cache, stale) , server-info is S(served) ,
@@ -390,7 +390,7 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nocache_and_age_miss_firsttime.gold"
 tr.StillRunningAfter = ts2
 
-# Test 5 - 2 : included Cache-Control "Cache-Control: no-cache" and "Cache-Control: s-maxage=5" ( 2nd ) is cache hit
+# Test 5 - 2 : included Cache-Control "Cache-Control: no-cache" and "Cache-Control: s-maxage=5" ( 2nd ) is cache fresh-hit
 #   ApacheTrafficServerParent [uScSsSfUpSeN:t cCSp sS] , ApacheTrafficServerChild [uScSsSfUpSeN:t cCSpSs ]
 #
 #   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is S(in cache, stale) , server-info is S(served) ,
@@ -404,7 +404,7 @@ tr.StillRunningAfter = ts2
 #                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
 #   NOTE: 2 Cache-Control lines are integrated into 1 Cache-Control line (It is a behavior of autest origin)
 #
-#   Same as Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) and origin return 200 OK is cache hit
+#   Same as Test 4 - 2 : included Cache-Control "Cache-Control: no-cache, s-maxage=5" ( 2nd ) and origin return 200 OK is cache fresh-hit
 tr = Test.AddTestRun()
 tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/nocache_and_age_2'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
@@ -432,7 +432,7 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/maxage_miss.gold"
 tr.StillRunningAfter = ts2
 
-# Test 6 - 2 : included Cache-Control "Cache-Control: max-age: 5" ( 2nd ) is cache hit
+# Test 6 - 2 : included Cache-Control "Cache-Control: max-age: 5" ( 2nd ) is cache fresh-hit
 #   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS], ApacheTrafficServerChild [uScHs f p eN:t cCHp s ]
 #
 #   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
