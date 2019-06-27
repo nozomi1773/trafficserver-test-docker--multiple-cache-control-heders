@@ -227,7 +227,7 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_miss.gold"
 tr.StillRunningAfter = ts2
 
-# Test 4 - 2 : included "Cache-Control: max-age=5, public, no-cache" ( 1st ) is cache miss , but cache-fill is W
+# Test 4 - 2 : included "Cache-Control: max-age=5, public, no-cache" ( 2nd ) is cache miss , but cache-fill is W
 #   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
 #
 #   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
@@ -245,7 +245,7 @@ tr.Processes.Default.ReturnCode = 0
 tr.Processes.Default.Streams.stdout = "gold/nginx_age_public_nocache_miss.gold"
 tr.StillRunningAfter = ts2
 
-# Test 4 - 3 : included "Cache-Control: max-age=5, public, no-cache" ( 1st ) is cache miss , but cache-fill is W
+# Test 4 - 3 : included "Cache-Control: max-age=5, public, no-cache" ( 3rd ) is cache miss , but cache-fill is W
 #   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
 #
 #   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
