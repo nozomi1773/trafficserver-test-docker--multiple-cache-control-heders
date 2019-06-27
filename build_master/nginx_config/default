@@ -20,8 +20,8 @@ server {
 		add_header Cache-Control 'max-age=5, public';
 	}
 	location /test_d {
-	}
 		add_header Cache-Control 'max-age=5, public, no-cache';
+	}
 	location /test_e {
 		add_header Cache-Control 'max-age=5, public';
 		add_header Cache-Control 'no-cache';
