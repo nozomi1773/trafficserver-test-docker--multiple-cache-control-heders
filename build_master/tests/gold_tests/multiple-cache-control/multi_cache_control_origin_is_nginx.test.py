@@ -68,7 +68,7 @@ ts2.Disk.remap_config.AddLine(
 ts2.Disk.records_config.update({
    'proxy.config.http.insert_request_via_str' : 1,
    'proxy.config.http.insert_response_via_str' : 3,
-   'proxy.config.http.request_via_str' : 'ApacheTrafficServerParent'
+   'proxy.config.http.request_via_str' : 'ApacheTrafficServerParent',
    'proxy.config.http.response_via_str' : 'ApacheTrafficServerParent',
    'proxy.config.http.cache.ims_on_client_no_cache' : 0,
    'proxy.config.cache.ram_cache.algorithm': 1,
@@ -81,10 +81,59 @@ ts2.Disk.records_config.update({
 })
 
 ###### Test Run ######
+# Test 1     : included "Cache-Control: public" is cache miss
+#   ApacheTrafficServerParent [uScMsSf pSeN:t cCMp sS], ApacheTrafficServerChild [uScMsSf pSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
 tr = Test.AddTestRun()
 tr.Processes.Default.StartBefore(Test.Processes.ts)
 tr.Processes.Default.StartBefore(Test.Processes.ts2)
-tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" -H "X-Update: no" http://localhost:{port}/test_a'.format(port=ts.Variables.port)
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_a/index.html'.format(port=ts.Variables.port)
 tr.Processes.Default.ReturnCode = 0
-tr.Processes.Default.Streams.stdout = "gold/default_miss.gold"
+tr.Processes.Default.Streams.stdout = "gold/nginx_default_miss.gold"
 tr.StillRunningAfter = ts2
+
+# Test 2 - 1 : included "Cache-Control: max-age=5" ( 1st ) is cache miss , but cache-fill is W
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS] , ApacheTrafficServerChild [uScMsSfWpSeN:t cCMpSs ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is S(connection opened successfully) , server-conn-info is blank(no server connection)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_b/index.html'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nginx_age_miss.gold"
+tr.StillRunningAfter = ts2
+
+# Test 2 - 2 : included "Cache-Control: max-age=5" ( 2nd ) is hit-fresh
+#   ApacheTrafficServerParent [uScMsSfWpSeN:t cCMp sS], ApacheTrafficServerChild [uScHs f p eN:t cCHp s ]
+#
+#   ApacheTrafficServerParent : client-info is S(simple request, not conditional) , cache-lookup is M(miss) , server-info is S(served) ,
+#                               cache-fill is W(written into cache, new copy) , proxy-info is S(served) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is M(cache miss, url not in cache) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is S(connection opened successfully)
+#
+#   ApacheTrafficServerChild  : client-info is S(simple request, not conditional) , cache-lookup is H(in cache, fresh) , server-info is blank(no server connection needed) ,
+#                               cache-fill is blank(=not recorded) , proxy-info is blank(=not recorded) , error-codes is N(no error) ,
+#                               tunnel-info is blank(no tunneling) , cache-type is C(cache) and cache-lookup-result is H(cache hit) ,
+#                               parent-proxy is blank(no parent proxy) , server-conn-info is blank(no server connection)
+tr = Test.AddTestRun()
+tr.Processes.Default.Command = 'curl -s -D - -v --ipv4 --http1.1 -H "x-debug: x-cache,via" -H "Host: www.example.com" http://localhost:{port}/test_b/index.html'.format(port=ts.Variables.port)
+tr.Processes.Default.ReturnCode = 0
+tr.Processes.Default.Streams.stdout = "gold/nginx_age_hit.gold"
+tr.StillRunningAfter = ts2
+
